@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxHarvest - Remote Access Services</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f5f0; /* The beige background */
+            color: #4a4740;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Top Header Wrapper */
+        .wrapper {
+            width: 100%;
+            max-width: 1100px;
+            background: transparent;
+        }
+
+        header {
+            background-color: #ffffff; /* White Header banner */
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #e6e1da;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            color: #2e2a24; /* Rich dark espresso brown */
+            font-weight: 600;
+        }
+
+        /* Safe Content Flex Container */
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        /* Left Column: Text Section */
+        .info-section {
+            flex: 1.2;
+            background: transparent;
+        }
+
+        .info-section .sub-heading {
+            font-size: 1rem;
+            color: #8c857b; /* Cool taupe / gray-brown */
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            color: #3d3730; /* Deep charcoal brown */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .info-section p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #57524a; /* Warm slate gray text */
+            margin-bottom: 18px;
+        }
+
+        /* Right Column: Interaction Login Box */
+        .sidebar {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            min-width: 320px;
+        }
+
+        .login-card {
+            background: #ffffff; /* Stark white card to stand out against beige */
+            width: 100%;
+            max-width: 380px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(61, 55, 48, 0.06);
+            border: 1px solid #e6e1da;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #706960; /* Earthy medium brown */
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1cac0; /* Beige-gray border */
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #faf9f6; /* Off-white input interior */
+            color: #3d3730;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #8c857b;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(140, 133, 123, 0.15);
+        }
+
+        /* Espresso Brown Sign In Button */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #544c43; /* Deep warm brown */
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #3d3730;
+        }
+
+        /* Bottom helper links placement */
+        .card-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        .card-links a {
+            color: #786d5f; /* Mid-tone brown links */
+            text-decoration: none;
+        }
+
+        .card-links a:hover {
+            color: #2e2a24;
+            text-decoration: underline;
+        }
+
+        .tour-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .tour-btn {
+            padding: 8px 20px;
+            background: #ffffff;
+            border: 1px solid #d1cac0;
+            border-radius: 6px;
+            color: #706960;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .tour-btn:hover {
+            background: #faf9f6;
+            border-color: #8c857b;
+            color: #3d3730;
+        }
+
+        /* Responsive stack for mobile/smaller screens */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <h1>TaxHarvest</h1>
+        </header>
+
+        <div class="content-container">
+            
+            <section class="info-section">
+                <p class="sub-heading">Welcome to TaxHarvest</p>
+                <h2>Minimize your tax losses</h2>
+                
+                <p>Our platform is a hybrid tool for managing and minimizing financial exposure and tax loss harvesting. It encourages and extends strategic planning and financial research. It utilizes a vast array of proprietary algorithms, market data, historical performance analyses, and other financial datasets.</p>
+                
+                <p>It forms the backbone of systematic portfolio management and facilitates access to a large number of analysis models and e-trading interfaces. A trained and committed financial team is at the service of the user community to support with relevant, actionable information.</p>
+                
+                <p>All functions are fully automated using a core Wealth Management System and enabled with real-time risk assessment and trade execution. The core platform is connected with high speed data links and modern secure systems to access various licensed and open financial data sources in all subject areas.</p>
+            </section>
+
+            <div class="sidebar">
+                <div class="login-card">
+                    <form action="/submit-access" method="POST">
+                        
+                        <div class="input-group">
+                            <label for="identity">Email or Username</label>
+                            <input type="text" id="identity" name="identity" required autocomplete="username">
+                        </div>
+
+                        <button type="submit" class="login-btn">Sign In</button>
+                    </form>
+
+                    <div class="card-links">
+                        <a href="#">Forgot Username?</a>
+                        <a href="#">Self Registration</a>
+                    </div>
+
+                    <div class="tour-container">
+                        <a href="#" class="tour-btn">Product Tour</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
