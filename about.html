@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaxHarvest - Remote Access Services</title>
+    <title>TaxHarvest - About</title>
     <style>
         * {
             box-sizing: border-box;
@@ -20,45 +20,68 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 20px;
         }
 
-        /* Top Header Wrapper */
-        .wrapper {
+        /* Full-width container specifically for the Navigation Bar */
+        .nav-wrapper {
+            width: 100%;
+            background-color: #ffffff; /* White navbar background spanning edge-to-edge */
+            border-bottom: 1px solid #e6e1da;
+            display: flex;
+            justify-content: center; /* Centers the inner navbar content */
+            margin-bottom: 40px;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 1100px; /* Aligns perfectly with the content section below */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 30px; /* Spacing between Home, Tax Calculation, Terms */
+        }
+
+        .nav-left a, .nav-right a {
+            color: #544c43; /* Medium warm brown text */
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            padding: 6px 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-left a:hover, .nav-right a:hover {
+            color: #2e2a24; /* Rich dark espresso brown */
+            border-bottom: 2px solid #8c857b;
+        }
+
+        /* Layout wrapper for the main content underneath the nav */
+        .content-wrapper {
             width: 100%;
             max-width: 1100px;
-            background: transparent;
+            padding: 0 20px;
+            margin-bottom: 40px;
         }
 
-        header {
-            background-color: #ffffff; /* White Header banner */
-            padding: 20px;
-            text-align: center;
-            border-radius: 12px;
-            border: 1px solid #e6e1da;
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            font-size: 2.3rem;
-            color: #2e2a24; /* Rich dark espresso brown */
-            font-weight: 600;
-        }
-
-        /* Safe Content Flex Container */
+        /* Safe Content Container - Swapped from flex to simple block structure */
         .content-container {
-            display: flex;
-            flex-direction: row;
-            gap: 40px;
-            align-items: flex-start;
-            justify-content: space-between;
             width: 100%;
         }
 
-        /* Left Column: Text Section */
+        /* About Page Center Content Column */
         .info-section {
-            flex: 1.2;
-            background: transparent;
+            width: 100%;
+            background: #ffffff; /* Added a white card panel to contain the text beautifully */
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #e6e1da;
+            box-shadow: 0 4px 15px rgba(61, 55, 48, 0.04);
         }
 
         .info-section .sub-heading {
@@ -73,144 +96,59 @@
         .info-section h2 {
             font-size: 2.5rem;
             color: #3d3730; /* Deep charcoal brown */
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             font-weight: 700;
         }
 
         .info-section p {
             font-size: 1.05rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #57524a; /* Warm slate gray text */
-            margin-bottom: 18px;
-        }
-
-        /* Right Column: Interaction Login Box */
-        .sidebar {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-            min-width: 320px;
-        }
-
-        .login-card {
-            background: #ffffff; /* Stark white card to stand out against beige */
-            width: 100%;
-            max-width: 380px;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(61, 55, 48, 0.06);
-            border: 1px solid #e6e1da;
-        }
-
-        .input-group {
             margin-bottom: 20px;
         }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #706960; /* Earthy medium brown */
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1cac0; /* Beige-gray border */
-            border-radius: 6px;
-            font-size: 1rem;
-            background-color: #faf9f6; /* Off-white input interior */
-            color: #3d3730;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        .input-group input:focus {
-            border-color: #8c857b;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(140, 133, 123, 0.15);
-        }
-
-        /* Espresso Brown Sign In Button */
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #544c43; /* Deep warm brown */
-            border: none;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .login-btn:hover {
-            background-color: #3d3730;
-        }
-
-        /* Bottom helper links placement */
-        .card-links {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-size: 0.85rem;
-        }
-
-        .card-links a {
-            color: #786d5f; /* Mid-tone brown links */
-            text-decoration: none;
-        }
-
-        .card-links a:hover {
-            color: #2e2a24;
-            text-decoration: underline;
-        }
-
-        .tour-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 25px;
-        }
-
-        .tour-btn {
-            padding: 8px 20px;
-            background: #ffffff;
-            border: 1px solid #d1cac0;
-            border-radius: 6px;
-            color: #706960;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .tour-btn:hover {
-            background: #faf9f6;
-            border-color: #8c857b;
-            color: #3d3730;
+        /* Remove bottom spacing from last paragraph element */
+        .info-section p:last-child {
+            margin-bottom: 0;
         }
 
         /* Responsive stack for mobile/smaller screens */
         @media (max-width: 768px) {
-            .content-container {
+            nav {
                 flex-direction: column;
-                align-items: center;
-                gap: 30px;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
             }
-            .sidebar {
-                width: 100%;
+            .nav-left {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .info-section {
+                padding: 25px;
+            }
+            .info-section h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <header>
-            <h1>TaxHarvest</h1>
-        </header>
+    <div class="nav-wrapper">
+        <nav>
+            <div class="nav-left">
+                <a href="about.html">Home</a>
+                <a href="taxinput.html">Tax Calculation</a>
+                <a href="#">Terms</a>
+            </div>
+            <div class="nav-right">
+                <a href="profile.html">Profile</a>
+            </div>
+        </nav>
+    </div>
 
+    <div class="content-wrapper">
         <div class="content-container">
             
             <section class="info-section">
@@ -223,29 +161,6 @@
                 
                 <p>All functions are fully automated using a core Wealth Management System and enabled with real-time risk assessment and trade execution. The core platform is connected with high speed data links and modern secure systems to access various licensed and open financial data sources in all subject areas.</p>
             </section>
-
-            <div class="sidebar">
-                <div class="login-card">
-                    <form action="/submit-access" method="POST">
-                        
-                        <div class="input-group">
-                            <label for="identity">Email or Username</label>
-                            <input type="text" id="identity" name="identity" required autocomplete="username">
-                        </div>
-
-                        <button type="submit" class="login-btn">Sign In</button>
-                    </form>
-
-                    <div class="card-links">
-                        <a href="#">Forgot Username?</a>
-                        <a href="#">Self Registration</a>
-                    </div>
-
-                    <div class="tour-container">
-                        <a href="#" class="tour-btn">Product Tour</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>

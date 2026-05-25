@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxHarvest - Profile</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f5f0; /* Soft warm beige background */
+            color: #4a4740;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        /* Full-width container specifically for the Navigation Bar */
+        .nav-wrapper {
+            width: 100%;
+            background-color: #ffffff; /* White navbar background spanning edge-to-edge */
+            border-bottom: 1px solid #e6e1da;
+            display: flex;
+            justify-content: center; /* Centers the inner navbar content */
+            margin-bottom: 40px;
+        }
+
+        /* Aligns perfectly with the rest of your site layout */
+        nav {
+            width: 100%;
+            max-width: 1100px; 
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 30px; /* Spacing between Home, Tax Calculation, Terms */
+        }
+
+        .nav-left a, .nav-right a {
+            color: #544c43; /* Medium warm brown text */
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            padding: 6px 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-left a:hover, .nav-right a:hover {
+            color: #2e2a24; /* Rich dark espresso brown */
+            border-bottom: 2px solid #8c857b;
+        }
+
+        /* Layout wrapper for the main content area */
+        .wrapper {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Card Container for Profile Info */
+        .profile-section {
+            background-color: #ffffff;
+            border: 1px solid #e6e1da;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px; /* Clean, compact card size for a profile card */
+            box-shadow: 0 4px 15px rgba(61, 55, 48, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-section h2 {
+            font-size: 1.8rem;
+            color: #3d3730;
+            font-weight: 700;
+            margin-bottom: 30px;
+            align-self: flex-start;
+            width: 100%;
+            border-bottom: 2px solid #f7f5f0;
+            padding-bottom: 15px;
+        }
+
+        /* Profile Picture Layout Container */
+        .avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 25px;
+        }
+
+        .avatar-preview {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d1cac0;
+            background-color: #faf9f6;
+        }
+
+        /* Hidden standard file input widget */
+        #fileInput {
+            display: none;
+        }
+
+        /* Styled Upload Overlay trigger */
+        .upload-label {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #544c43; /* Deep warm brown matches layout buttons */
+            color: #ffffff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background-color 0.2s;
+        }
+
+        .upload-label:hover {
+            background-color: #3d3730;
+        }
+
+        .upload-label svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Live Profile Display Header */
+        .user-display-name {
+            font-size: 1.5rem;
+            color: #2e2a24;
+            font-weight: 600;
+            margin-bottom: 25px;
+            word-break: break-word;
+        }
+
+        /* Input Fields Block styling */
+        .input-group {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #706960;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 12px;
+            border: 1px solid #d1cac0;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #faf9f6;
+            color: #3d3730;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #8c857b;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(140, 133, 123, 0.15);
+        }
+
+        /* Form Save Button setup styling */
+        .save-btn {
+            padding: 12px 35px;
+            background-color: #544c43;
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 100%;
+        }
+
+        .save-btn:hover {
+            background-color: #3d3730;
+        }
+
+        /* Dynamic Feedback Success Toast Styling */
+        .success-toast {
+            display: none;
+            background-color: #3d3730;
+            color: #faf9f6;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease-in-out;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments for smaller windows */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
+            .nav-left {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .profile-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <nav>
+            <div class="nav-left">
+                <a href="about.html">Home</a>
+                <a href="taxinput.html">Tax Calculation</a>
+                <a href="#">Terms</a>
+            </div>
+            <div class="nav-right">
+                <a href="profile.html">Profile</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="wrapper">
+        <section class="profile-section">
+            <h2>User Profile</h2>
+            
+            <form id="profileForm" onsubmit="saveChanges(event)" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                
+                <div class="avatar-container">
+                    <img id="avatarImage" class="avatar-preview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238c857b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>" alt="Profile Picture">
+                    
+                    <label for="fileInput" class="upload-label" title="Upload new photo">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </label>
+                    <input type="file" id="fileInput" name="profile_pic" accept="image/*" onchange="previewImage(event)">
+                </div>
+
+                <div id="displayName" class="user-display-name">Your Name</div>
+
+                <div class="input-group">
+                    <label for="nameInput">UPDATE DISPLAY NAME</label>
+                    <input type="text" id="nameInput" name="username" value="" placeholder="Enter your name" oninput="updateName(this.value)">
+                </div>
+
+                <button type="submit" class="save-btn">Save Changes</button>
+            </form>
+        </section>
+
+        <div id="successToast" class="success-toast"></div>
+    </div>
+
+    <script>
+        let isImageUploaded = false;
+
+        // Real-time photo preview handler
+        function previewImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarImage').src = e.target.result;
+                    isImageUploaded = true;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Real-time display name text handler 
+        function updateName(val) {
+            const nameHeader = document.getElementById('displayName');
+            nameHeader.textContent = val.trim() !== "" ? val : "Your Name";
+        }
+
+        // Action when pressing "Save Changes"
+        function saveChanges(event) {
+            event.preventDefault(); // Prevents instant page reload
+            
+            const enteredName = document.getElementById('nameInput').value.trim();
+            const toast = document.getElementById('successToast');
+            
+            let displaySavedName = enteredName !== "" ? enteredName : "[No Name Entered]";
+            let displaySavedPhoto = isImageUploaded ? "Custom Image Uploaded" : "Default Placeholder Used";
+
+            // Update success message UI text with visual changes log
+            toast.innerHTML = `✓ Changes Saved!<br><span style='font-weight: normal; font-size: 0.85rem; opacity: 0.85;'>Redirecting to home...</span>`;
+            toast.style.display = 'block';
+
+            // Pauses for 1.5 seconds so the user can read the success state, then redirects
+            setTimeout(() => {
+                window.location.href = "firstpage.html";
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>

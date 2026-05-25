@@ -20,29 +20,54 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 20px;
         }
 
+        /* Full-width container specifically for the Navigation Bar */
+        .nav-wrapper {
+            width: 100%;
+            background-color: #ffffff; /* White navbar background spanning edge-to-edge */
+            border-bottom: 1px solid #e6e1da;
+            display: flex;
+            justify-content: center; /* Centers the inner navbar content */
+            margin-bottom: 40px;
+        }
+
+        /* Matches max-width precisely with firstpage.html for seamless transition */
+        nav {
+            width: 100%;
+            max-width: 1100px; 
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 30px; /* Spacing between Home, Tax Calculation, Terms */
+        }
+
+        .nav-left a, .nav-right a {
+            color: #544c43; /* Medium warm brown text */
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            padding: 6px 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-left a:hover, .nav-right a:hover {
+            color: #2e2a24; /* Rich dark espresso brown */
+            border-bottom: 2px solid #8c857b;
+        }
+
+        /* Layout wrapper for the main content area */
         .wrapper {
             width: 100%;
-            max-width: 900px;
-            background: transparent;
-        }
-
-        /* Top Header Banner */
-        header {
-            background-color: #ffffff; /* White Header banner */
-            padding: 20px;
-            text-align: center;
-            border-radius: 12px;
-            border: 1px solid #e6e1da;
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            font-size: 2.3rem;
-            color: #2e2a24; /* Rich dark espresso brown */
-            font-weight: 600;
+            max-width: 1100px; /* Kept at 1100px outer box to align beautifully below the matched navbar width */
+            padding: 0 20px;
+            margin-bottom: 40px;
         }
 
         /* Tax Calculation Card Container */
@@ -54,11 +79,8 @@
             box-shadow: 0 4px 15px rgba(61, 55, 48, 0.04);
         }
 
-        /* Flex header to position the button on top right */
+        /* Cleaned Header layout */
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 30px;
             border-bottom: 2px solid #f7f5f0;
             padding-bottom: 15px;
@@ -70,28 +92,12 @@
             font-weight: 700;
         }
 
-        /* Espresso Brown Calculate Action Button */
-        .calc-btn {
-            padding: 12px 35px;
-            background-color: #544c43; /* Deep warm brown */
-            border: none;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .calc-btn:hover {
-            background-color: #3d3730;
-        }
-
-        /* Two-column grid matching user image layout */
+        /* Two-column grid matching layout */
         .calc-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px 40px;
+            margin-bottom: 35px; /* Added spacing before the button wrapper */
         }
 
         .input-group {
@@ -130,12 +136,41 @@
             color: #a39c93; /* Muted brown-gray placeholder */
         }
 
+        /* Flex container to hold the button centered at the bottom */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Espresso Brown Calculate Action Button */
+        .calc-btn {
+            padding: 14px 50px;
+            background-color: #544c43; /* Deep warm brown */
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .calc-btn:hover {
+            background-color: #3d3730;
+        }
+
         /* Responsive adjustments for mobile screens */
         @media (max-width: 768px) {
-            .section-header {
+            nav {
                 flex-direction: column;
-                align-items: flex-start;
                 gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
+            .nav-left {
+                flex-direction: column;
+                gap: 12px;
             }
             .calc-btn {
                 width: 100%;
@@ -149,17 +184,25 @@
 </head>
 <body>
 
-    <div class="wrapper">
-        <header>
-            <h1>TaxHarvest</h1>
-        </header>
+    <div class="nav-wrapper">
+        <nav>
+            <div class="nav-left">
+                <a href="about.html">Home</a>
+                <a href="taxinput.html">Tax Calculation</a>
+                <a href="#">Terms</a>
+            </div>
+            <div class="nav-right">
+                <a href="profile.html">Profile</a>
+            </div>
+        </nav>
+    </div>
 
+    <div class="wrapper">
         <section class="calculation-section">
             <form action="/calculate-tax" method="POST">
                 
                 <div class="section-header">
                     <h2>Tax calculation</h2>
-                    <button type="submit" class="calc-btn">Calculate</button>
                 </div>
 
                 <div class="calc-grid">
@@ -208,6 +251,11 @@
                     </div>
 
                 </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="calc-btn">Calculate</button>
+                </div>
+
             </form>
         </section>
     </div>
