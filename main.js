@@ -9,14 +9,20 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const basicDed = document.getElementById('BasicDed');
     const medInsurace = document.getElementById('MedInsurance');
     const houseLoan = document.getElementById('HousingLoan');
-    const pension = document.getElementById('NPS');
+    const HRA = document.getElementById('NPS');
     const charity = document.getElementById('Charity');
     const otherDed = document.getElementById('OtherDed');
+    const city = document.getElementById('citySelect');
 })
 
 if(interestInc>10000) interestInc = interestInc-10000
 else interestInc = 0
 
+
 const digitalTax = 0.30*digitalInc
+
+const totalInc = salary + interestInc + otherInc
+const taxableInc = totalInc - totalDed
+const totalTax = incomeTax + digitalTax
 
 
