@@ -14,15 +14,21 @@ function Deductions(
   basicDed,
   medInsurance,
   houseLoan,
-  pension,
+  HRA,
   charity,
   otherDed,
+  city
 ) {
   let medDed = 0,
     houseDed = 0,
     Ded80C = 0;
   if (medInsurace < 50000) medDed = medInsurance;
   else medDed = 50000;
+
+  if(city=='Metro')
+    hraDed = min(hra, 0.5*salary)
+  else
+    hraDed = min(hra, 0.4*salary)
 
   //charity has no deduction
 
@@ -32,7 +38,7 @@ function Deductions(
   if (basicDed < 150000) Ded80C = basicDed;
   else Ded80C = 150000;
 
-  let totalDed = medDed + houseDed + Ded80C + charity + otherDed + stdDed;
+  let totalDed = medDed + houseDed + Ded80C + charity + otherDed + stdDed + hraDed;
   return totalDed;
 }
 

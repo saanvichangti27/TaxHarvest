@@ -14,3 +14,9 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const otherDed = document.getElementById('OtherDed');
 })
 
+if(interestInc>10000) interestInc = interestInc-10000
+else interestInc = 0
+
+const digitalTax = 0.30*digitalInc
+
+
