@@ -1,6 +1,6 @@
 const stdDed = 50000;
 
-function OldIncomeTax(taxSalary) {
+export function OldIncomeTax(taxSalary) {
   let tax = 0;
   if (taxSalary <= 250000) tax = 0;
   else if (taxSalary <= 500000) tax = 0.05 * (taxSalary - 250000);
@@ -10,7 +10,7 @@ function OldIncomeTax(taxSalary) {
   return tax;
 }
 
-function Deductions(
+export function Deductions(
   basicDed,
   medInsurance,
   houseLoan,

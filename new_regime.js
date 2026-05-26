@@ -1,6 +1,6 @@
 const stdDed = 75000
 
-function NewIncomeTax(taxSalary) {
+export function NewIncomeTax(taxSalary) {
   let tax = 0;
   if (taxSalary <= 400000) tax = 0;
   else if (taxSalary > 400000 && taxSalary < 800000) tax = 0.05 * taxSalary;
