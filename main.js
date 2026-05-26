@@ -19,10 +19,12 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const city = document.getElementById('citySelect');
 })
 
-let incomeTaxNew = NewReg.NewIncomeTax(taxableInc)
-let incomeTaxOld = OldReg.OldIncomeTax(taxableInc)
-let rebateOld = OldReg.Rebate(totalTax)
-let rebateNew = NewReg.Rebate(totalTax)
+if(interestInc>10000) interestInc = interestInc-10000
+else interestInc = 0
+const digitalTax = 0.30*digitalInc
+
+const totalInc = salary + interestInc + otherInc
+
 let totalDed = OldReg.Deductions(basicDed,  
   medInsurance,  
   houseLoan,  
@@ -31,17 +33,29 @@ let totalDed = OldReg.Deductions(basicDed,
   otherDed,
   city)
 
-if(interestInc>10000) interestInc = interestInc-10000
-else interestInc = 0
+const taxableIncOld = totalInc - totalDed
+const taxableIncNew = totalInc - NewReg.stdDed
 
 
-const digitalTax = 0.30*digitalInc
+let incomeTaxNew = NewReg.NewIncomeTax(taxableIncNew) + NewReg.Surcharge(taxableIncNew)
+let incomeTaxOld = OldReg.OldIncomeTax(taxableIncOld) + OldReg.Surcharge(taxableIncOld)
 
-const totalInc = salary + interestInc + otherInc
-const taxableInc = totalInc - totalDed
-const totalTax = incomeTax + digitalTax + profTax
-const payableTaxOld = TaxOnInc - rebateOld
-const payabletaxNew = TaxOnInc - rebateNew
+const totalTaxOld = incomeTaxOld + digitalTax + profTax
+const totalTaxNew = incomeTaxNew + digitalTax + profTax
+
+let rebateOld = OldReg.Rebate(totalTax)
+let rebateNew = NewReg.Rebate(totalTax)
+
+const payableTaxOld = totalTaxOld - rebateOld 
+const payabletaxNew = totalTaxNew - rebateNew
+
+
+
+
+
+
+
+
 
 
 

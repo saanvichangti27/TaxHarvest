@@ -1,4 +1,4 @@
-const stdDed = 75000
+export const stdDed = 75000
 
 export function NewIncomeTax(taxSalary) {
   let tax = 0;
@@ -29,4 +29,24 @@ export function NewIncomeTax(taxSalary) {
       0.2 * 400000 +
       0.25 * 400000 +
       0.3 * (taxSalary - 2400000);
+
+      return tax;
+}
+
+export function Rebate(){
+    const rebate = 60000
+    return rebate
+}
+
+export function Surcharge(taxSalary){
+  let surcharge = 0
+  if (taxSalary <= 5000000 )
+    surcharge = 0
+  else if (taxSalary <= 10000000)
+    surcharge = .1*(taxSalary - 5000000)
+  else if (taxSalary <= 20000000)
+    surcharge = .15*(taxSalary - 10000000) + .1*5000000
+  else 
+    surcharge = .25*(taxSalary - 10000000) + .15*(10000000) + .1*5000000
+return surcharge
 }

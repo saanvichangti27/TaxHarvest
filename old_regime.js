@@ -42,3 +42,22 @@ export function Deductions(
   return totalDed;
 }
 
+export function Rebate(){
+    const rebate = 12500
+    return rebate
+}
+
+export function Surcharge(taxSalary){
+  let surcharge = 0
+  if (taxSalary <= 5000000 )
+    surcharge = 0
+  else if (taxSalary <= 10000000)
+    surcharge = .1*(taxSalary - 5000000)
+  else if (taxSalary <= 20000000)
+    surcharge = .15*(taxSalary - 10000000) + .1*5000000
+  else if (taxSalary <= 50000000)
+    surcharge = .25*(taxSalary - 10000000) + .15*(10000000) + .1*5000000
+  else 
+    surcharge = .37*(taxSalary - 50000000) + .25*30000000 + .15*(10000000) + .1*5000000
+return surcharge
+}
