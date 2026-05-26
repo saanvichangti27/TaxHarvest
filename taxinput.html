@@ -173,12 +173,71 @@
                 </div>
             </div>
 
+    <div id="results-section" style="display: none; grid-column: span 2; margin-top: 30px; border-top: 2px solid var(--accent-tan); padding-top: 20px;">
+    <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 20px; font-family: inherit;">Tax Computation</h2>
+    
+    <table style="width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border-color); font-size: 15px;">
+        <thead>
+            <tr style="background-color: #f8f9fa;">
+                <th style="text-align: left; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown);">Particulars</th>
+                <th style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">New Regime</th>
+                <th style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">Old Regime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Gross Total Income</td>
+                <td id="res-gross-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-gross-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Standard Deduction</td>
+                <td id="res-std-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-std-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Deductions</td>
+                <td id="res-ded-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-ded-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #fdfbf9;">
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Taxable Income</td>
+                <td id="res-taxable-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-taxable-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Tax on Total Income</td>
+                <td id="res-tax-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-tax-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Rebate</td>
+                <td id="res-rebate-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-rebate-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Health and Education Cess</td>
+                <td id="res-cess-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-cess-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+            <tr style="font-weight: bold; font-size: 1.1rem; background-color: #F5F1F0; color: var(--primary-brown);">
+                <td style="padding: 12px; border: 1px solid var(--border-color);">Payable Tax</td>
+                <td id="res-payable-new" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+                <td id="res-payable-old" style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
             <div class="footer-actions">
                 <button class="btn btn-outline" onclick="document.querySelectorAll('.tab-btn')[0].click()">Back</button>
-                <button class="btn btn-solid" id="calc-btn">View Calculation</button>
+                 <button class="btn btn-solid" id="calc-btn" onclick="yourFunctionName()">View Calculation</button>
             </div>
         </div>
     </div>
+
+    
 
     <script>
         function openTab(evt, tabName) {
@@ -190,6 +249,13 @@
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
+
+        function yourFunctionName() {
+        const results = document.getElementById('results-section');
+        results.style.display = 'block';
+        results.scrollIntoView({ behavior: 'smooth' });
+    }
+
 
         document.querySelectorAll('.comma-input').forEach(input => {
             input.addEventListener('input', function(e) {
