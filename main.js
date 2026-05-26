@@ -19,6 +19,8 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const city = document.getElementById('citySelect');
 })
 
+
+
 if(interestInc>10000) interestInc = interestInc-10000
 else interestInc = 0
 
@@ -30,3 +32,12 @@ const taxableInc = totalInc - totalDed
 const totalTax = incomeTax + digitalTax
 
 
+let incomeTaxNew = NewReg.NewIncomeTax(taxableInc)
+let tincomeTaxOld = OldReg.OldIncomeTax(taxableInc)
+let totalDed = OldReg.Deductions(basicDed,  
+  medInsurance,  
+  houseLoan,  
+  HRA,
+  charity,
+  otherDed,
+  city)
