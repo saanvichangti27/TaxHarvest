@@ -19,7 +19,17 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const city = document.getElementById('citySelect');
 })
 
-
+let incomeTaxNew = NewReg.NewIncomeTax(taxableInc)
+let incomeTaxOld = OldReg.OldIncomeTax(taxableInc)
+let rebateOld = OldReg.Rebate(totalTax)
+let rebateNew = NewReg.Rebate(totalTax)
+let totalDed = OldReg.Deductions(basicDed,  
+  medInsurance,  
+  houseLoan,  
+  HRA,
+  charity,
+  otherDed,
+  city)
 
 if(interestInc>10000) interestInc = interestInc-10000
 else interestInc = 0
@@ -30,14 +40,10 @@ const digitalTax = 0.30*digitalInc
 const totalInc = salary + interestInc + otherInc
 const taxableInc = totalInc - totalDed
 const totalTax = incomeTax + digitalTax + profTax
+const payableTaxOld = TaxOnInc - rebateOld
+const payabletaxNew = TaxOnInc - rebateNew
 
 
-let incomeTaxNew = NewReg.NewIncomeTax(taxableInc)
-let tincomeTaxOld = OldReg.OldIncomeTax(taxableInc)
-let totalDed = OldReg.Deductions(basicDed,  
-  medInsurance,  
-  houseLoan,  
-  HRA,
-  charity,
-  otherDed,
-  city)
+
+
+
