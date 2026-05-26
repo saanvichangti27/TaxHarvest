@@ -9,7 +9,7 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const basicDed = document.getElementById('BasicDed');
     const medInsurace = document.getElementById('MedInsurance');
     const houseLoan = document.getElementById('HousingLoan');
-    const Nps = document.getElementById('NPS');
+    const pension = document.getElementById('NPS');
     const charity = document.getElementById('Charity');
     const otherDed = document.getElementById('OtherDed');
     
