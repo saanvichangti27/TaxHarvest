@@ -7,7 +7,6 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const interestInc = document.getElementById('IncFromInterest');
     const rentInc = document.getElementById('RentalInc');
     const digitalInc = document.getElementById('DigitalInc');
-    const homeLoan = document.getElementById('HomeLoanInc');
     const profTax = document.getElementById('ProfTax');
     const otherInc = document.getElementById('OtherIncome');
     const basicDed = document.getElementById('BasicDed');
