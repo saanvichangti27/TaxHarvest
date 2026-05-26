@@ -6,7 +6,6 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const salary = document.getElementById('grossSalary');
     const interestInc = document.getElementById('IncFromInterest');
     const rentInc = document.getElementById('RentalInc');
-    const digitalInc = document.getElementById('DigitalInc');
     const profTax = document.getElementById('ProfTax');
     const otherInc = document.getElementById('OtherIncome');
     const basicDed = document.getElementById('BasicDed');
@@ -20,7 +19,7 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
 
 if(interestInc>10000) interestInc = interestInc-10000
 else interestInc = 0
-const digitalTax = 0.30*digitalInc
+
 
 const totalInc = salary + interestInc + otherInc + rentInc
 
@@ -39,8 +38,8 @@ const taxableIncNew = totalInc - NewReg.stdDed
 let incomeTaxNew = NewReg.NewIncomeTax(taxableIncNew) + NewReg.Surcharge(taxableIncNew)
 let incomeTaxOld = OldReg.OldIncomeTax(taxableIncOld) + OldReg.Surcharge(taxableIncOld)
 
-const totalTaxOld = incomeTaxOld + digitalTax + profTax
-const totalTaxNew = incomeTaxNew + digitalTax + profTax
+const totalTaxOld = incomeTaxOld + profTax
+const totalTaxNew = incomeTaxNew + profTax
 
 let rebateOld = OldReg.Rebate(totalTax)
 let rebateNew = NewReg.Rebate(totalTax)
