@@ -1,4 +1,6 @@
 
+import * as OldReg from './old_regime.js';
+import * as NewReg from './new_regime.js';
 
 document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const salary = document.getElementById('grossSalary');
