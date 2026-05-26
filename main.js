@@ -1,5 +1,3 @@
-import * as OldReg from './old_regime.js';
-import * as NewReg from './new_regime.js';
 
 
 document.getElementById('calc-btn').addEventListener('submit', (e) =>{
@@ -29,7 +27,7 @@ const digitalTax = 0.30*digitalInc
 
 const totalInc = salary + interestInc + otherInc
 const taxableInc = totalInc - totalDed
-const totalTax = incomeTax + digitalTax
+const totalTax = incomeTax + digitalTax + profTax
 
 
 let incomeTaxNew = NewReg.NewIncomeTax(taxableInc)
