@@ -23,7 +23,7 @@ if(interestInc>10000) interestInc = interestInc-10000
 else interestInc = 0
 const digitalTax = 0.30*digitalInc
 
-const totalInc = salary + interestInc + otherInc
+const totalInc = salary + interestInc + otherInc + rentInc
 
 let totalDed = OldReg.Deductions(basicDed,  
   medInsurance,  
