@@ -23,6 +23,6 @@ const digitalTax = 0.30*digitalInc
 
 const totalInc = salary + interestInc + otherInc
 const taxableInc = totalInc - totalDed
-const totalTax = incomeTax + digitalTax
+const totalTax = incomeTax + digitalTax + profTax
 
 
