@@ -13,3 +13,4 @@ document.getElementById('calc-btn').addEventListener('submit', (e) =>{
     const charity = document.getElementById('Charity');
     const otherDed = document.getElementById('OtherDed');
 })
+
