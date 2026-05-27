@@ -34,7 +34,7 @@ export function Deductions(
     hraDed = Math.min(HRA, 0.4*salary)
 
   //charity has no deduction
-
+  
   if (houseLoan <= 200000) houseDed = houseLoan;
   else houseDed = 200000;
 
