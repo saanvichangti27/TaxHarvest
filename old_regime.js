@@ -1,4 +1,5 @@
 const stdDed = 50000;
+export const rebate = 12500
 
 export function OldIncomeTax(taxSalary) {
   let tax = 0;
@@ -17,34 +18,31 @@ export function Deductions(
   HRA,
   charity,
   otherDed,
-  city
+  city,
+  salary
 ) {
   let medDed = 0,
     houseDed = 0,
-    Ded80C = 0;
-  if (medInsurace < 50000) medDed = medInsurance;
+    Ded80C = 0,
+    hraDed=0;
+  if (medInsurance <= 50000) medDed = medInsurance;
   else medDed = 50000;
 
-  if(city=='Metro')
-    hraDed = min(hra, 0.5*salary)
+  if(city=='metro')
+    hraDed = Math.min(HRA, 0.5*salary)
   else
-    hraDed = min(hra, 0.4*salary)
+    hraDed = Math.min(HRA, 0.4*salary)
 
   //charity has no deduction
 
-  if (houseLoan < 200000) houseDed = houseLoan;
+  if (houseLoan <= 200000) houseDed = houseLoan;
   else houseDed = 200000;
 
-  if (basicDed < 150000) Ded80C = basicDed;
+  if (basicDed <= 150000) Ded80C = basicDed;
   else Ded80C = 150000;
 
   let totalDed = medDed + houseDed + Ded80C + charity + otherDed + stdDed + hraDed;
   return totalDed;
-}
-
-export function Rebate(){
-    const rebate = 12500
-    return rebate
 }
 
 export function Surcharge(taxSalary){
