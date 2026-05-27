@@ -12,14 +12,14 @@ export function OldIncomeTax(taxSalary) {
 }
 
 export function Deductions(
+  salary,
   basicDed,
   medInsurance,
   houseLoan,
   HRA,
   charity,
   otherDed,
-  city,
-  salary
+  city
 ) {
   let medDed = 0,
     houseDed = 0,
@@ -34,9 +34,9 @@ export function Deductions(
     hraDed = Math.min(HRA, 0.4*salary)
 
   //charity has no deduction
-  
-  if (houseLoan <= 200000) houseDed = houseLoan;
-  else houseDed = 200000;
+
+  if (houseLoan <= 150000) houseDed = houseLoan;
+  else houseDed = 150000;
 
   if (basicDed <= 150000) Ded80C = basicDed;
   else Ded80C = 150000;

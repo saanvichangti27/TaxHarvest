@@ -3,16 +3,18 @@ import * as NewReg from "./new_regime.js";
 
 document.getElementById("calc-btn").addEventListener("click", (e) => {
   const salary = parseInt(document.getElementById("grossSalary").value) || 0;
-let interestInc = parseInt(document.getElementById("IncFromInterest").value) || 0;
-const rentInc = parseInt(document.getElementById("RentalInc").value) || 0;
-const profTax = parseInt(document.getElementById("ProfTax").value) || 0;
-const otherInc = parseInt(document.getElementById("OtherIncome").value) || 0;
-const basicDed = parseInt(document.getElementById("BasicDed").value) || 0;
-const medInsurance = parseInt(document.getElementById("MedInsurance").value) || 0;
-const houseLoan = parseInt(document.getElementById("HousingLoan").value) || 0;
-const HRA = parseInt(document.getElementById("NPS").value) || 0;
-const charity = parseInt(document.getElementById("Charity").value) || 0;
-const otherDed = parseInt(document.getElementById("OtherDed").value) || 0;
+  let interestInc =
+    parseInt(document.getElementById("IncFromInterest").value) || 0;
+  const rentInc = parseInt(document.getElementById("RentalInc").value) || 0;
+  const profTax = parseInt(document.getElementById("ProfTax").value) || 0;
+  const otherInc = parseInt(document.getElementById("OtherIncome").value) || 0;
+  const basicDed = parseInt(document.getElementById("BasicDed").value) || 0;
+  const medInsurance =
+    parseInt(document.getElementById("MedInsurance").value) || 0;
+  const houseLoan = parseInt(document.getElementById("HousingLoan").value) || 0;
+  const HRA = parseInt(document.getElementById("NPS").value) || 0;
+  const charity = parseInt(document.getElementById("Charity").value) || 0;
+  const otherDed = parseInt(document.getElementById("OtherDed").value) || 0;
   const city = document.getElementById("citySelect").value;
 
   if (interestInc > 10000) interestInc = interestInc - 10000;
@@ -21,6 +23,7 @@ const otherDed = parseInt(document.getElementById("OtherDed").value) || 0;
   const totalInc = salary + interestInc + otherInc + rentInc;
 
   let totalDed = OldReg.Deductions(
+    salary,
     basicDed,
     medInsurance,
     houseLoan,
@@ -30,9 +33,9 @@ const otherDed = parseInt(document.getElementById("OtherDed").value) || 0;
     city,
   );
 
-  const taxableIncOld = totalInc - totalDed;
-  const taxableIncNew = totalInc - NewReg.stdDed;
-
+  const taxableIncOld = Math.max(0, totalInc - totalDed);
+  const taxableIncNew = Math.max(0, totalInc - NewReg.stdDed);
+  
   let incomeTaxNew =
     NewReg.NewIncomeTax(taxableIncNew) + NewReg.Surcharge(taxableIncNew);
   let incomeTaxOld =
@@ -41,24 +44,25 @@ const otherDed = parseInt(document.getElementById("OtherDed").value) || 0;
   const totalTaxOld = incomeTaxOld + profTax;
   const totalTaxNew = incomeTaxNew + profTax;
 
-  let rebateOld = taxableIncOld <= 500000 ? OldReg.rebate : 0;
-  let rebateNew = taxableIncNew <= 1200000 ? NewReg.rebate : 0;
+  let rebateNew = totalInc > 0 && taxableIncNew <= 1200000 ? NewReg.rebate : 0;
+  let rebateOld = totalInc > 0 && taxableIncOld <= 500000 ? OldReg.rebate : 0;
 
   let payableTaxOld = totalTaxOld - rebateOld;
   let payableTaxNew = totalTaxNew - rebateNew;
 
-  let cessOld = 0.04 * payableTaxOld;
-  let cessNew = 0.04 * payableTaxNew;
+  let cessOld = Math.max(0, Math.round(0.04 * payableTaxOld));
+  let cessNew = Math.max(0, Math.round(0.04 * payableTaxNew));
 
   document.getElementById("grossIncNew").textContent = Math.round(totalInc);
   document.getElementById("res-gross-old").textContent = Math.round(totalInc);
 
-  document.getElementById("res-std-new").textContent = 75000;
-  document.getElementById("res-std-old").textContent = 50000;
+  // Wrap these in a condition
+  document.getElementById("res-std-new").textContent = totalInc > 0 ? 75000 : 0;
+  document.getElementById("res-std-old").textContent = totalInc > 0 ? 50000 : 0;
 
   document.getElementById("res-ded-new").textContent = 0;
-  document.getElementById("res-ded-old").textContent = Math.round(totalDed);
-
+  document.getElementById("res-ded-old").textContent =
+    totalInc > 0 ? Math.round(totalDed) : 0;
   document.getElementById("res-taxable-new").textContent =
     Math.round(taxableIncNew);
   document.getElementById("res-taxable-old").textContent =
@@ -74,7 +78,7 @@ const otherDed = parseInt(document.getElementById("OtherDed").value) || 0;
   document.getElementById("res-cess-old").textContent = Math.round(cessOld);
 
   document.getElementById("res-payable-new").textContent = Math.round(
-    payabletaxNew + cessNew,
+    payableTaxNew + cessNew,
   );
   document.getElementById("res-payable-old").textContent = Math.round(
     payableTaxOld + cessOld,
