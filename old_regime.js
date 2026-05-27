@@ -1,5 +1,5 @@
 const stdDed = 50000;
-export const rebate = 12500
+export const rebate = 12500;
 
 export function OldIncomeTax(taxSalary) {
   let tax = 0;
