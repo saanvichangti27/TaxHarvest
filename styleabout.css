@@ -366,7 +366,7 @@ nav {
 .about-body {
   font-family: 'Jost', sans-serif;
   font-weight: 300;
-  font-size: 0.82rem;
+  font-size: 1.0rem;
   line-height: 1.8;
   color: #7a6555;
   max-width: 600px;
@@ -374,7 +374,7 @@ nav {
 .about-body2 {
   font-family: 'Jost', serif;
   font-weight: 300;
-  font-size: 0.83rem;
+  font-size: 1.2rem;
   font-style: italic;
   line-height: 1.8;
   color: #7a6555;
