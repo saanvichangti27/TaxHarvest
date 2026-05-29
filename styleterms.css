@@ -1,0 +1,333 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f5f0;
+    color: #4a4740;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ── Nav ── */
+.nav-wrapper {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6e1da;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+nav {
+    width: 100%;
+    max-width: 1100px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left { display: flex; gap: 30px; }
+
+.nav-left a, .nav-right a {
+    color: #544c43;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 6px 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover,
+.nav-left a.active {
+    color: #2e2a24;
+    border-bottom: 2px solid #8c857b;
+}
+
+/* ── Layout ── */
+.content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px 60px;
+}
+
+/* ── Page header ── */
+.page-header {
+    margin-bottom: 28px;
+}
+
+.sub-heading {
+    font-size: 0.78rem;
+    color: #8c857b;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.page-header h2 {
+    font-size: 2rem;
+    color: #3d3730;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.page-intro {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: #6b6460;
+}
+
+/* ── Section cards ── */
+.info-section {
+    background: #ffffff;
+    border: 1px solid #e6e1da;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8c6a4f;
+    background-color: #f5ede6;
+    border: 1px solid #e0c9b8;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-bottom: 8px;
+}
+
+.info-section h3 {
+    font-size: 1.15rem;
+    color: #3d3730;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.section-note {
+    font-size: 0.9rem;
+    color: #7a7470;
+    margin-bottom: 14px;
+    font-style: italic;
+}
+
+.scope-note {
+    font-size: 0.88rem;
+    color: #7a7470;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #f0ebe4;
+}
+
+/* ── Data table ── */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+}
+
+.data-table thead tr {
+    background-color: #f5f1ee;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: #3d3730;
+    border-bottom: 2px solid #e6e1da;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f0ebe4;
+    color: #57524a;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background-color: #faf8f5;
+}
+
+.data-table .center {
+    text-align: center;
+}
+
+.data-table small {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #8c857b;
+}
+
+/* ── Badges ── */
+.cap-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: #fff8ed;
+    color: #a06000;
+    border: 1px solid #f0d090;
+    border-radius: 20px;
+    padding: 1px 8px;
+}
+
+.auto-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #f0faf1;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+    border-radius: 20px;
+    padding: 1px 8px;
+    margin-left: 4px;
+}
+
+/* ── Formula box ── */
+.formula-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #faf8f5;
+    border: 1px solid #e6e1da;
+    border-left: 3px solid #8c6a4f;
+    border-radius: 6px;
+    padding: 11px 16px;
+    font-size: 0.91rem;
+    color: #3d3730;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.formula-label {
+    font-size: 0.67rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #8c6a4f;
+    background: #f0e6dc;
+    border-radius: 4px;
+    padding: 2px 7px;
+    flex-shrink: 0;
+}
+
+/* ── Slab grid ── */
+.slab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.slab-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -1px;
+}
+
+.new-title {
+    background-color: #5a7c65;
+    color: #ffffff;
+}
+
+.old-title {
+    background-color: #7a6254;
+    color: #ffffff;
+}
+
+.old-title small {
+    font-weight: 400;
+    font-size: 0.78rem;
+    opacity: 0.85;
+}
+
+.slab-grid .data-table {
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    border: 1px solid #e6e1da;
+}
+
+@media (max-width: 768px) {
+    .slab-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Disclaimer ── */
+.disclaimer-section {
+    background: #fffcf5;
+    border-color: #f0d090;
+}
+
+.disclaimer-icon {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #a06000;
+}
+
+.disclaimer-section h3 {
+    color: #7a4f00;
+}
+
+.disclaimer-section p {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: #6b5030;
+    margin-bottom: 10px;
+}
+
+.disclaimer-section p:last-child { margin-bottom: 0; }
+
+.disclaimer-section a {
+    color: #8c6a4f;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+        padding: 15px;
+    }
+    .nav-left {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .info-section {
+        padding: 20px 18px;
+    }
+    .page-header h2 {
+        font-size: 1.6rem;
+    }
+    .data-table {
+        font-size: 0.85rem;
+    }
+    .data-table th, .data-table td {
+        padding: 8px 10px;
+    }
+}
