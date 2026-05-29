@@ -37,7 +37,7 @@
                         data-tooltip="Salary before reducing exemptions (HRA, LTA), Standard Deduction & Professional Tax">i</span></div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="grossSalary">
+                    <input type="text" class="comma-input" placeholder="0" id="grossSalary">
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="IncFromInterest">
+                    <input type="text" class="comma-input" placeholder="0" id="IncFromInterest">
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="RentalInc">
+                    <input type="text" class="comma-input" placeholder="0" id="RentalInc">
                 </div>
             </div>
 
@@ -83,8 +83,9 @@
                         data-tooltip="Annual professional tax levied by State Government">i</span></div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="ProfTax">
+                    <input type="text" class="comma-input" placeholder="0" id="ProfTax" max="2500" oninput="validateMax(this)">
                 </div>
+                <span class="field-error" style="display:none; color:#d32f2f; font-size:0.82rem; margin-top:4px;"></span>
             </div>
 
             <div class="input-group">
@@ -93,7 +94,7 @@
                         data-tooltip="Any other taxable income">i</span></div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="OtherIncome">
+                    <input type="text" class="comma-input" placeholder="0" id="OtherIncome">
                 </div>
             </div>
 
@@ -112,7 +113,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" " placeholder=" 0" id="BasicDed">
+                    <input type="text" class="comma-input" placeholder=" 0" id="BasicDed">
                 </div>
             </div>
 
@@ -124,7 +125,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="MedInsurance">
+                    <input type="text" class="comma-input" placeholder="0" id="MedInsurance">
                 </div>
             </div>
 
@@ -136,7 +137,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="HousingLoan">
+                    <input type="text" class="comma-input" placeholder="0" id="HousingLoan">
                 </div>
             </div>
 
@@ -147,7 +148,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="NPS">
+                    <input type="text" class="comma-input" placeholder="0" id="NPS">
                 </div>
             </div>
 
@@ -159,7 +160,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="Charity">
+                    <input type="text" class="comma-input" placeholder="0" id="Charity">
                 </div>
             </div>
 
@@ -171,7 +172,7 @@
                 </div>
                 <div class="input-wrapper">
                     <span class="currency-symbol">₹</span>
-                    <input type="number" placeholder="0" id="OtherDed">
+                    <input type="text" class="comma-input" placeholder="0" id="OtherDed">
                 </div>
             </div>
 
@@ -272,14 +273,23 @@
     <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 16px; font-family: inherit;">
         💡 Tax Saving Tips
     </h2>
-    <ul id="savings-tips-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
-    </ul>
+    <ol id="savings-tips-list" style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px;">
+</ol>
 </div>
     </div>
     <script type="module" src="main.js"></script>
     <script>
 
-
+        function validateMax(input) {
+    const max = parseInt(input.getAttribute('max'));
+    const errorSpan = input.closest('.input-group').querySelector('.field-error');
+    if (input.value !== '' && parseInt(input.value) > max) {
+        errorSpan.textContent = `Value must be between 0 and ${max.toLocaleString('en-IN')}`;
+        errorSpan.style.display = 'block';
+    } else {
+        errorSpan.style.display = 'none';
+    }
+}
 
         function openTab(evt, tabName) {
             var i, tabContent, tabBtns;
@@ -298,9 +308,8 @@
 
     // Wait briefly for main.js to populate values, then show badge + savings
     setTimeout(() => {
-        const payableNew = parseInt(document.getElementById('res-payable-new').textContent) || 0;
-        const payableOld = parseInt(document.getElementById('res-payable-old').textContent) || 0;
-
+        const payableNew = parseInt(document.getElementById('res-payable-new').textContent.replace(/,/g, '')) || 0;
+const payableOld = parseInt(document.getElementById('res-payable-old').textContent.replace(/,/g, '')) || 0;
         const badgeNew = document.getElementById('badge-new');
         const badgeOld = document.getElementById('badge-old');
         const savingsLine = document.getElementById('savings-line');
@@ -313,7 +322,7 @@
             return;
         }
 
-        const diff = Math.abs(payableNew - payableOld);
+        const diff = (Math.abs(payableNew - payableOld)).toLocaleString('en-IN');
         const badgeHTML = '<span class="recommended-badge">✔</span>';
 
         if (payableNew < payableOld) {
