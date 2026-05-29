@@ -1,358 +1,704 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tax Calculator Interface</title>
-    <link rel="stylesheet" href="styletaxin.css">
+    <link rel="stylesheet" href="styletaxin.css" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <div class="nav-wrapper">
-        <nav>
-            <div class="nav-left">
-                <a href="index.html">Home</a>
-                <a href="taxinput.html">Tax Calculation</a>
-                <a href="terms.html">Terms</a>
-            </div>
-            <div class="nav-right">
-                <a href="profile.html">Profile</a>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-left">
+          <a href="index.html">Home</a>
+          <a href="taxinput.html">Tax Calculation</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="nav-right">
+          <a href="profile.html">Profile</a>
+        </div>
+      </nav>
     </div>
 
     <div class="container">
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'income')">Income details</button>
-            <button class="tab-btn" onclick="openTab(event, 'deduction')">Deduction</button>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'income')">
+          Income details
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'deduction')">
+          Deduction
+        </button>
+      </div>
+
+      <div id="income" class="tab-content active">
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Annual gross salary</label>
+            <span
+              class="info-icon"
+              data-tooltip="Salary before reducing exemptions (HRA, LTA), Standard Deduction & Professional Tax"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="grossSalary"
+            />
+          </div>
         </div>
 
-        <div id="income" class="tab-content active">
-            <div class="input-group">
-                <div class="label-wrapper"><label>Annual gross salary</label>
-                <span class="info-icon"
-                        data-tooltip="Salary before reducing exemptions (HRA, LTA), Standard Deduction & Professional Tax">i</span></div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="grossSalary">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper"><label>City Type</label>
-                <span class="info-icon"
-                        data-tooltip="Metro Cities: Delhi, Bengaluru, Kolkata, Chennai, Mumbai, Pune, Hyderabad, Ahmedabad">i</span></div>
-                <div class="input-wrapper" style="padding-left: 10px;">
-                    <select id="citySelect">
-                        <option value="metro">Metro</option>
-                        <option value="non-metro">Non-Metro</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Income from interest</label>
-                    <span class="info-icon"
-                        data-tooltip="Includes interest from savings bank, deposits and other interest">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="IncFromInterest">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Rental income</label>
-                    <span class="info-icon" data-tooltip="Annual rent received on let-out">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="RentalInc">
-                </div>
-            </div>
-
-
-            <div class="input-group">
-                <div class="label-wrapper"><label>Professional Tax</label>
-                <span class="info-icon"
-                        data-tooltip="Annual professional tax levied by State Government">i</span></div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="ProfTax" max="2500" oninput="validateMax(this)">
-                </div>
-                <span class="field-error" style="display:none; color:#d32f2f; font-size:0.82rem; margin-top:4px;"></span>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper"><label>Other incomes</label>
-                <span class="info-icon"
-                        data-tooltip="Any other taxable income">i</span></div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="OtherIncome">
-                </div>
-            </div>
-
-            <div class="footer-actions">
-                <button class="btn btn-solid"
-                    onclick="document.querySelectorAll('.tab-btn')[1].click()">Continue</button>
-            </div>
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>City Type</label>
+            <span
+              class="info-icon"
+              data-tooltip="Metro Cities: Delhi, Bengaluru, Kolkata, Chennai, Mumbai, Pune, Hyderabad, Ahmedabad"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper" style="padding-left: 10px">
+            <select id="citySelect">
+              <option value="metro">Metro</option>
+              <option value="non-metro">Non-Metro</option>
+            </select>
+          </div>
         </div>
 
-        <div id="deduction" class="tab-content">
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Basic deductions - 80C</label>
-                    <span class="info-icon"
-                        data-tooltip="Amount invested/paid in tax saving instruments such as PPF, ELSS mutual funds, LIC premium, etc. (max: 1.5L)">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder=" 0" id="BasicDed">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Medical insurance - 80D</label>
-                    <span class="info-icon"
-                        data-tooltip="Medical premium & preventive health checkup fees paid for self & family including parents">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="MedInsurance">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Interest on housing loan - 80EEA</label>
-                    <span class="info-icon"
-                        data-tooltip="Amount of interest paid on self-occupied housing loan sanctioned during FY 2022-2023 (max: 1.5L)">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="HousingLoan">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>House Rent Allowance</label>
-                    <span class="info-icon" data-tooltip="Amount for paying house rent">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="NPS">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Donations to charity - 80G</label>
-                    <span class="info-icon"
-                        data-tooltip="Amount paid as donation to charitable insitutions or certain recognized funds">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="Charity">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="label-wrapper">
-                    <label>Any other deduction</label>
-                    <span class="info-icon"
-                        data-tooltip="Enter the deduction amount to be claimed under any other sections not listed above">i</span>
-                </div>
-                <div class="input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="text" class="comma-input" placeholder="0" id="OtherDed">
-                </div>
-            </div>
-
-            <div class="footer-actions">
-                <button class="btn btn-outline" onclick="document.querySelectorAll('.tab-btn')[0].click()">Back</button>
-                <button class="btn btn-solid" id="calc-btn" onclick="yourFunctionName()">View Calculation</button>
-            </div>
-
-
-
-
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Income from interest</label>
+            <span
+              class="info-icon"
+              data-tooltip="Includes interest from savings bank, deposits and other interest"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="IncFromInterest"
+            />
+          </div>
         </div>
 
-
-        <div id="results-section"
-            style="display: none; grid-column: span 2; margin: 30px;  border-top: 2px solid var(--accent-tan); padding-top: 20px;">
-            <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 20px; font-family: inherit;">Tax
-                Computation</h2>
-
-            <table
-                style="width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border-color); font-size: 15px;">
-                <thead>
-                    <tr style="background-color: #f8f9fa;">
-                        <th
-                            style="text-align: left; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown);">
-                            Particulars</th>
-                        <th style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">
-    <span id="badge-new"></span>New Regime
-</th>
-<th style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">
-    <span id="badge-old"></span>Old Regime
-</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Gross Total Income</td>
-                        <td style="text-align: right; padding: 12px; border: 1px solid var(--border-color);"
-                            id="grossIncNew"></td>
-                        <td id="res-gross-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Standard Deduction</td>
-                        <td id="res-std-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-std-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Deductions</td>
-                        <td id="res-ded-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-ded-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr style="font-weight: bold; background-color: #fdfbf9;">
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Taxable Income</td>
-                        <td id="res-taxable-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-taxable-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Tax on Total Income</td>
-                        <td id="res-tax-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-tax-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Rebate</td>
-                        <td id="res-rebate-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-rebate-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Health and Education Cess</td>
-                        <td id="res-cess-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-cess-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                    <tr
-                        style="font-weight: bold; font-size: 1.1rem; background-color: #F5F1F0; color: var(--primary-brown);">
-                        <td style="padding: 12px; border: 1px solid var(--border-color);">Payable Tax</td>
-                        <td id="res-payable-new"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                        <td id="res-payable-old"
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color);">—</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="savings-line" style="display:none;"></div>
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Rental income</label>
+            <span
+              class="info-icon"
+              data-tooltip="Annual rent received on let-out"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="RentalInc"
+            />
+          </div>
         </div>
-        <div id="savings-section" style="display: none; grid-column: span 2; margin: 30px; border-top: 2px solid var(--accent-tan); padding-top: 20px;">
-    <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 16px; font-family: inherit;">
-        💡 Tax Saving Tips
-    </h2>
-    <ol id="savings-tips-list" style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px;">
-</ol>
-</div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Professional Tax</label>
+            <span
+              class="info-icon"
+              data-tooltip="Annual professional tax levied by State Government"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="ProfTax"
+              max="2500"
+              oninput="validateMax(this)"
+            />
+          </div>
+          <span
+            class="field-error"
+            style="
+              display: none;
+              color: #d32f2f;
+              font-size: 0.82rem;
+              margin-top: 4px;
+            "
+          ></span>
+        </div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Other incomes</label>
+            <span class="info-icon" data-tooltip="Any other taxable income"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="OtherIncome"
+            />
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <button
+            class="btn btn-solid"
+            onclick="document.querySelectorAll('.tab-btn')[1].click()"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+
+      <div id="deduction" class="tab-content">
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Basic deductions - 80C</label>
+            <span
+              class="info-icon"
+              data-tooltip="Amount invested/paid in tax saving instruments such as PPF, ELSS mutual funds, LIC premium, etc. (max: 1.5L)"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder=" 0"
+              id="BasicDed"
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Medical insurance - 80D</label>
+            <span
+              class="info-icon"
+              data-tooltip="Medical premium & preventive health checkup fees paid for self & family including parents"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="MedInsurance"
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Interest on housing loan - 80EEA</label>
+            <span
+              class="info-icon"
+              data-tooltip="Amount of interest paid on self-occupied housing loan sanctioned during FY 2022-2023 (max: 1.5L)"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="HousingLoan"
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>House Rent Allowance</label>
+            <span class="info-icon" data-tooltip="Amount for paying house rent"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input type="text" class="comma-input" placeholder="0" id="NPS" />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Donations to charity - 80G</label>
+            <span
+              class="info-icon"
+              data-tooltip="Amount paid as donation to charitable insitutions or certain recognized funds"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="Charity"
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-wrapper">
+            <label>Any other deduction</label>
+            <span
+              class="info-icon"
+              data-tooltip="Enter the deduction amount to be claimed under any other sections not listed above"
+              >i</span
+            >
+          </div>
+          <div class="input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="comma-input"
+              placeholder="0"
+              id="OtherDed"
+            />
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <button
+            class="btn btn-outline"
+            onclick="document.querySelectorAll('.tab-btn')[0].click()"
+          >
+            Back
+          </button>
+          <button
+            class="btn btn-solid"
+            id="calc-btn"
+            onclick="yourFunctionName()"
+          >
+            View Calculation
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="results-section"
+        style="
+          display: none;
+          grid-column: span 2;
+          margin: 30px;
+          border-top: 2px solid var(--accent-tan);
+          padding-top: 20px;
+        "
+      >
+        <h2
+          style="
+            text-align: center;
+            color: var(--primary-brown);
+            margin-bottom: 20px;
+            font-family: inherit;
+          "
+        >
+          Tax Computation
+        </h2>
+
+        <table
+          style="
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            font-size: 15px;
+          "
+        >
+          <thead>
+            <tr style="background-color: #f8f9fa">
+              <th
+                style="
+                  text-align: left;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                  color: var(--primary-brown);
+                "
+              >
+                Particulars
+              </th>
+              <th
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                  color: var(--primary-brown);
+                  width: 25%;
+                "
+              >
+                <span id="badge-new"></span>New Regime
+              </th>
+              <th
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                  color: var(--primary-brown);
+                  width: 25%;
+                "
+              >
+                <span id="badge-old"></span>Old Regime
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Gross Total Income
+              </td>
+              <td
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+                id="grossIncNew"
+              ></td>
+              <td
+                id="res-gross-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Standard Deduction
+              </td>
+              <td
+                id="res-std-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-std-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Deductions
+              </td>
+              <td
+                id="res-ded-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-ded-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #fdfbf9">
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Taxable Income
+              </td>
+              <td
+                id="res-taxable-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-taxable-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Tax on Total Income
+              </td>
+              <td
+                id="res-tax-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-tax-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Rebate
+              </td>
+              <td
+                id="res-rebate-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-rebate-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Health and Education Cess
+              </td>
+              <td
+                id="res-cess-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-cess-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+            <tr
+              style="
+                font-weight: bold;
+                font-size: 1.1rem;
+                background-color: #f5f1f0;
+                color: var(--primary-brown);
+              "
+            >
+              <td style="padding: 12px; border: 1px solid var(--border-color)">
+                Payable Tax
+              </td>
+              <td
+                id="res-payable-new"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+              <td
+                id="res-payable-old"
+                style="
+                  text-align: right;
+                  padding: 12px;
+                  border: 1px solid var(--border-color);
+                "
+              >
+                —
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="savings-line" style="display: none"></div>
+      </div>
+      <div
+        id="savings-section"
+        style="
+          display: none;
+          grid-column: span 2;
+          margin: 30px;
+          border-top: 2px solid var(--accent-tan);
+          padding-top: 20px;
+        "
+      >
+        <h2
+          style="
+            text-align: center;
+            color: var(--primary-brown);
+            margin-bottom: 16px;
+            font-family: inherit;
+          "
+        >
+          💡 Tax Saving Tips
+        </h2>
+        <ol
+          id="savings-tips-list"
+          style="
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          "
+        ></ol>
+      </div>
     </div>
     <script type="module" src="main.js"></script>
     <script>
-
-        function validateMax(input) {
-    const max = parseInt(input.getAttribute('max'));
-    const errorSpan = input.closest('.input-group').querySelector('.field-error');
-    if (input.value !== '' && parseInt(input.value) > max) {
-        errorSpan.textContent = `Value must be between 0 and ${max.toLocaleString('en-IN')}`;
-        errorSpan.style.display = 'block';
-    } else {
-        errorSpan.style.display = 'none';
-    }
-}
-
-        function openTab(evt, tabName) {
-            var i, tabContent, tabBtns;
-            tabContent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabContent.length; i++) tabContent[i].classList.remove("active");
-            tabBtns = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove("active");
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        function yourFunctionName() {
-    const results = document.getElementById('results-section');
-    results.style.display = 'block';
-    results.scrollIntoView({ behavior: 'smooth' });
-
-    // Wait briefly for main.js to populate values, then show badge + savings
-    setTimeout(() => {
-        const payableNew = parseInt(document.getElementById('res-payable-new').textContent.replace(/,/g, '')) || 0;
-const payableOld = parseInt(document.getElementById('res-payable-old').textContent.replace(/,/g, '')) || 0;
-        const badgeNew = document.getElementById('badge-new');
-        const badgeOld = document.getElementById('badge-old');
-        const savingsLine = document.getElementById('savings-line');
-
-        badgeNew.innerHTML = '';
-        badgeOld.innerHTML = '';
-
-        if (payableNew === 0 && payableOld === 0) {
-            savingsLine.style.display = 'none';
-            return;
-        }
-
-        const diff = (Math.abs(payableNew - payableOld)).toLocaleString('en-IN');
-        const badgeHTML = '<span class="recommended-badge">✔</span>';
-
-        if (payableNew < payableOld) {
-            badgeNew.innerHTML = badgeHTML;
-            savingsLine.innerHTML = `<span>New Regime</span> is recommended for you. It saves you <span>₹${diff.toLocaleString('en-IN')}</span> in taxes.`;
-        } else if (payableOld < payableNew) {
-            badgeOld.innerHTML = badgeHTML;
-            savingsLine.innerHTML = `You save <span>₹${diff.toLocaleString('en-IN')}</span> in taxes if you choose the <span>Old Regime</span>`;
+      function validateMax(input) {
+        const max = parseInt(input.getAttribute("max"));
+        const errorSpan = input
+          .closest(".input-group")
+          .querySelector(".field-error");
+        if (input.value !== "" && parseInt(input.value) > max) {
+          errorSpan.textContent = `Value must be between 0 and ${max.toLocaleString("en-IN")}`;
+          errorSpan.style.display = "block";
         } else {
-            savingsLine.innerHTML = `Both regimes result in the same payable tax.`;
+          errorSpan.style.display = "none";
         }
+      }
 
-        savingsLine.style.display = 'block';
-    }, 50);
-}
+      function openTab(evt, tabName) {
+        var i, tabContent, tabBtns;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++)
+          tabContent[i].classList.remove("active");
+        tabBtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabBtns.length; i++)
+          tabBtns[i].classList.remove("active");
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
 
+      function yourFunctionName() {
+        const results = document.getElementById("results-section");
+        results.style.display = "block";
+        results.scrollIntoView({ behavior: "smooth" });
 
-        document.querySelectorAll('.comma-input').forEach(input => {
-            input.addEventListener('input', function (e) {
-                let value = e.target.value.replace(/,/g, '');
-                if (!value) { e.target.value = ''; return; }
-                let x = value.toString();
-                let lastThree = x.substring(x.length - 3);
-                let otherNumbers = x.substring(0, x.length - 3);
-                if (otherNumbers != '') lastThree = ',' + lastThree;
-                let res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-                e.target.value = res;
-            });
+        // Wait briefly for main.js to populate values, then show badge + savings
+        setTimeout(() => {
+          const payableNew =
+            parseInt(
+              document
+                .getElementById("res-payable-new")
+                .textContent.replace(/,/g, ""),
+            ) || 0;
+          const payableOld =
+            parseInt(
+              document
+                .getElementById("res-payable-old")
+                .textContent.replace(/,/g, ""),
+            ) || 0;
+          const badgeNew = document.getElementById("badge-new");
+          const badgeOld = document.getElementById("badge-old");
+          const savingsLine = document.getElementById("savings-line");
+
+          badgeNew.innerHTML = "";
+          badgeOld.innerHTML = "";
+
+          if (payableNew === 0 && payableOld === 0) {
+            savingsLine.style.display = "none";
+            return;
+          }
+
+          const diff = Math.abs(payableNew - payableOld).toLocaleString(
+            "en-IN",
+          );
+          const badgeHTML = '<span class="recommended-badge">✔</span>';
+
+          if (payableNew < payableOld) {
+            badgeNew.innerHTML = badgeHTML;
+            savingsLine.innerHTML = `<span>New Regime</span> is recommended for you. It saves you <span>₹${diff.toLocaleString("en-IN")}</span> in taxes.`;
+          } else if (payableOld < payableNew) {
+            badgeOld.innerHTML = badgeHTML;
+            savingsLine.innerHTML = `You save <span>₹${diff.toLocaleString("en-IN")}</span> in taxes if you choose the <span>Old Regime</span>`;
+          } else {
+            savingsLine.innerHTML = `Both regimes result in the same payable tax.`;
+          }
+
+          savingsLine.style.display = "block";
+        }, 50);
+      }
+
+      document.querySelectorAll(".comma-input").forEach((input) => {
+        input.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/,/g, "");
+          if (!value) {
+            e.target.value = "";
+            return;
+          }
+          let x = value.toString();
+          let lastThree = x.substring(x.length - 3);
+          let otherNumbers = x.substring(0, x.length - 3);
+          if (otherNumbers != "") lastThree = "," + lastThree;
+          let res =
+            otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+          e.target.value = res;
         });
+      });
     </script>
-</body>
-
+  </body>
 </html>

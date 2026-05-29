@@ -1,288 +1,407 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaxHarvest - Terms & Methodology</title>
-    <link rel="stylesheet" href="styleterms.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="styleterms.css" />
+  </head>
+  <body>
     <div class="nav-wrapper">
-        <nav>
-            <div class="nav-left">
-                <a href="index.html">Home</a>
-                <a href="taxinput.html">Tax Calculation</a>
-                <a href="terms.html" class="active">Terms</a>
-            </div>
-            <div class="nav-right">
-                <a href="profile.html">Profile</a>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-left">
+          <a href="index.html">Home</a>
+          <a href="taxinput.html">Tax Calculation</a>
+          <a href="terms.html" class="active">Terms</a>
+        </div>
+        <div class="nav-right">
+          <a href="profile.html">Profile</a>
+        </div>
+      </nav>
     </div>
 
     <div class="content-wrapper">
+      <div class="page-header">
+        <p class="sub-heading">FY 2025–26 &nbsp;|&nbsp; AY 2026–27</p>
+        <h2>Terms &amp; Methodology</h2>
+        <p class="page-intro">
+          This calculator computes income tax for salaried individuals under
+          both the Old and New Tax Regime. All figures are in Indian Rupees and
+          follow the Income Tax Act, 1961 as applicable for AY 2026–27.
+        </p>
+      </div>
 
-        <div class="page-header">
-            <p class="sub-heading">FY 2025–26 &nbsp;|&nbsp; AY 2026–27</p>
-            <h2>Terms &amp; Methodology</h2>
-            <p class="page-intro">This calculator computes income tax for salaried individuals under both the Old and New Tax Regime. All figures are in Indian Rupees and follow the Income Tax Act, 1961 as applicable for AY 2026–27.</p>
+      <!-- 1. Inputs -->
+      <section class="info-section">
+        <div class="section-label">Inputs</div>
+        <h3>Income Fields</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>How it's used</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Gross Salary</strong></td>
+              <td>
+                Total salary before any deductions — the figure on your Form 16
+                or salary slip.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Income from Interest</strong></td>
+              <td>
+                interest from savings banks, deposits and other interests. The
+                first ₹10,000 is exempt under Section 80TTA and subtracted
+                automatically.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Rental Income</strong></td>
+              <td>Amount of annual rental income received on let-out.</td>
+            </tr>
+            <tr>
+              <td><strong>Other Income</strong></td>
+              <td>
+                Freelance receipts, gifts exceeding ₹50,000, or any other
+                taxable income.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Professional Tax</strong></td>
+              <td>
+                State-level tax deducted by your employer (typically up to
+                ₹2,400/yr).
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="formula-box">
+          <span class="formula-label">Computed</span>
+          <strong>Gross Total Income</strong> = Salary + Taxable Interest +
+          Rental Income + Other Income
         </div>
+      </section>
 
-        <!-- 1. Inputs -->
-        <section class="info-section">
-            <div class="section-label">Inputs</div>
-            <h3>Income Fields</h3>
+      <!-- 2. Rates -->
+      <section class="info-section">
+        <div class="section-label">Rates</div>
+        <h3>Tax Slabs</h3>
+        <div class="slab-grid">
+          <div>
+            <div class="slab-title new-title">New Regime</div>
             <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Field</th>
-                        <th>How it's used</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Gross Salary</strong></td>
-                        <td>Total salary before any deductions — the figure on your Form 16 or salary slip.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Income from Interest</strong></td>
-                        <td>interest from savings banks, deposits and other interests. The first ₹10,000 is exempt under Section 80TTA and subtracted automatically.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Rental Income</strong></td>
-                        <td>Amount of annual rental income received on let-out.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Other Income</strong></td>
-                        <td>Freelance receipts, gifts exceeding ₹50,000, or any other taxable income. </td>
-                    </tr>
-                    <tr>
-                        <td><strong>Professional Tax</strong></td>
-                        <td>State-level tax deducted by your employer (typically up to ₹2,400/yr). </td>
-                    </tr>
-                </tbody>
+              <thead>
+                <tr>
+                  <th>Income Range</th>
+                  <th class="center">Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Up to ₹4,00,000</td>
+                  <td class="center">Nil</td>
+                </tr>
+                <tr>
+                  <td>₹4,00,001 – ₹8,00,000</td>
+                  <td class="center">5%</td>
+                </tr>
+                <tr>
+                  <td>₹8,00,001 – ₹12,00,000</td>
+                  <td class="center">10%</td>
+                </tr>
+                <tr>
+                  <td>₹12,00,001 – ₹16,00,000</td>
+                  <td class="center">15%</td>
+                </tr>
+                <tr>
+                  <td>₹16,00,001 – ₹20,00,000</td>
+                  <td class="center">20%</td>
+                </tr>
+                <tr>
+                  <td>₹20,00,001 – ₹24,00,000</td>
+                  <td class="center">25%</td>
+                </tr>
+                <tr>
+                  <td>Above ₹24,00,000</td>
+                  <td class="center">30%</td>
+                </tr>
+              </tbody>
             </table>
-            <div class="formula-box">
-                <span class="formula-label">Computed</span>
-                <strong>Gross Total Income</strong> = Salary + Taxable Interest + Rental Income + Other Income
+          </div>
+          <div>
+            <div class="slab-title old-title">
+              Old Regime <small>(below 60 yrs)</small>
             </div>
-        </section>
-
-        <!-- 2. Rates -->
-        <section class="info-section">
-            <div class="section-label">Rates</div>
-            <h3>Tax Slabs</h3>
-            <div class="slab-grid">
-                <div>
-                    <div class="slab-title new-title">New Regime</div>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Income Range</th><th class="center">Rate</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Up to ₹4,00,000</td><td class="center">Nil</td></tr>
-                            <tr><td>₹4,00,001 – ₹8,00,000</td><td class="center">5%</td></tr>
-                            <tr><td>₹8,00,001 – ₹12,00,000</td><td class="center">10%</td></tr>
-                            <tr><td>₹12,00,001 – ₹16,00,000</td><td class="center">15%</td></tr>
-                            <tr><td>₹16,00,001 – ₹20,00,000</td><td class="center">20%</td></tr>
-                            <tr><td>₹20,00,001 – ₹24,00,000</td><td class="center">25%</td></tr>
-                            <tr><td>Above ₹24,00,000</td><td class="center">30%</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <div class="slab-title old-title">Old Regime <small>(below 60 yrs)</small></div>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Income Range</th><th class="center">Rate</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Up to ₹2,50,000</td><td class="center">Nil</td></tr>
-                            <tr><td>₹2,50,001 – ₹5,00,000</td><td class="center">5%</td></tr>
-                            <tr><td>₹5,00,001 – ₹10,00,000</td><td class="center">20%</td></tr>
-                            <tr><td>Above ₹10,00,000</td><td class="center">30%</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Old Regime -->
-        <section class="info-section">
-            <div class="section-label">Old Regime Only</div>
-            <h3>Deductions</h3>
-            <p class="section-note">None of these apply under the new regime.</p>
             <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Section</th>
-                        <th>What it covers</th>
-                        <th class="center">Cap applied</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>80C</strong></td>
-                        <td>EPF/PPF, life insurance premiums, ELSS, NSC, home loan principal, children's tuition fees</td>
-                        <td class="center"><span class="cap-badge">₹1,50,000</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>80D</strong></td>
-                        <td>Health insurance for self, spouse, children. Self/family up to ₹25,000</td>
-                        <td class="center"><span class="cap-badge">₹50,000</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>HRA</strong></td>
-                        <td>Lower of: amount entered, or 50% of salary (metro) / 40% of salary (non-metro). Metro cities: Delhi, Mumbai, Chennai, Kolkata, Bengaluru, Pune, Ahmedabad, Hyderabad</td>
-                        <td class="center">—</td>
-                    </tr>
-                    <tr>
-                        <td><strong>24(b)</strong></td>
-                        <td>Interest on home loan for self-occupied property.</td>
-                        <td class="center"><span class="cap-badge">₹1,50,000</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>80G</strong></td>
-                        <td>Donations to approved charities. Applied at 100%.</td>
-                        <td class="center">—</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Other</strong></td>
-                        <td>Any deduction not listed above.</td>
-                        <td class="center">—</td>
-                    </tr>
-                </tbody>
+              <thead>
+                <tr>
+                  <th>Income Range</th>
+                  <th class="center">Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Up to ₹2,50,000</td>
+                  <td class="center">Nil</td>
+                </tr>
+                <tr>
+                  <td>₹2,50,001 – ₹5,00,000</td>
+                  <td class="center">5%</td>
+                </tr>
+                <tr>
+                  <td>₹5,00,001 – ₹10,00,000</td>
+                  <td class="center">20%</td>
+                </tr>
+                <tr>
+                  <td>Above ₹10,00,000</td>
+                  <td class="center">30%</td>
+                </tr>
+              </tbody>
             </table>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- 4. New Regime -->
-        <section class="info-section">
-            <div class="section-label">Comparision</div>
-            <h3>What's Different</h3>
-            <p class="section-note">The new regime has lower slab rates but does not allow most deductions.</p>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>New Regime</th>
-                        <th>Old Regime</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Standard Deduction</td>
-                        <td>₹75,000 <span class="auto-badge">Auto-applied</span></td>
-                        <td>₹50,000 <span class="auto-badge">Auto-applied</span></td>
-                    </tr>
-                    <tr>
-                        <td>80C, 80D, HRA, 80G etc.</td>
-                        <td>Not allowed</td>
-                        <td>Allowed</td>
-                    </tr>
-                    <tr>
-                        <td>Section 87A Rebate threshold</td>
-                        <td>Up to ₹12,00,000</td>
-                        <td>Up to ₹5,00,000</td>
-                    </tr>
-                    <tr>
-                        <td>Section 87A Rebate amount</td>
-                        <td>Up to ₹60,000</td>
-                        <td>Up to ₹12,500</td>
-                    </tr>
-                    <tr>
-                        <td>Max surcharge rate</td>
-                        <td>25% (capped)</td>
-                        <td>37%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="formula-box">
-                <span class="formula-label">New Regime</span>
-                <strong>Taxable Income</strong> = Gross Total Income − ₹75,000 − Professional Tax
-            </div>
-            <div class="formula-box" style="margin-top: 10px;">
-                <span class="formula-label">Old Regime</span>
-                <strong>Taxable Income</strong> = Gross Total Income − ₹50,000 − Professional Tax − All Deductions
-            </div>
-        </section>
+      <!-- 3. Old Regime -->
+      <section class="info-section">
+        <div class="section-label">Old Regime Only</div>
+        <h3>Deductions</h3>
+        <p class="section-note">None of these apply under the new regime.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>What it covers</th>
+              <th class="center">Cap applied</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>80C</strong></td>
+              <td>
+                EPF/PPF, life insurance premiums, ELSS, NSC, home loan
+                principal, children's tuition fees
+              </td>
+              <td class="center"><span class="cap-badge">₹1,50,000</span></td>
+            </tr>
+            <tr>
+              <td><strong>80D</strong></td>
+              <td>
+                Health insurance for self, spouse, children. Self/family up to
+                ₹25,000
+              </td>
+              <td class="center"><span class="cap-badge">₹50,000</span></td>
+            </tr>
+            <tr>
+              <td><strong>HRA</strong></td>
+              <td>
+                Lower of: amount entered, or 50% of salary (metro) / 40% of
+                salary (non-metro). Metro cities: Delhi, Mumbai, Chennai,
+                Kolkata, Bengaluru, Pune, Ahmedabad, Hyderabad
+              </td>
+              <td class="center">—</td>
+            </tr>
+            <tr>
+              <td><strong>24(b)</strong></td>
+              <td>Interest on home loan for self-occupied property.</td>
+              <td class="center"><span class="cap-badge">₹1,50,000</span></td>
+            </tr>
+            <tr>
+              <td><strong>80G</strong></td>
+              <td>Donations to approved charities. Applied at 100%.</td>
+              <td class="center">—</td>
+            </tr>
+            <tr>
+              <td><strong>Other</strong></td>
+              <td>Any deduction not listed above.</td>
+              <td class="center">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <!-- 5. Both Regimes -->
-        <section class="info-section">
-            <div class="section-label">Both Regimes</div>
-            <h3>Common to Both</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Professional Tax</strong></td>
-                        <td>Deducted from gross total income under both regimes. Enter the amount deducted from your salary.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Section 80TTA</strong></td>
-                        <td>First ₹10,000 of savings interest exempt. Applied automatically to the interest income you enter.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Health &amp; Education Cess</strong></td>
-                        <td>4% on tax after rebate, under both regimes. Funds primary education and healthcare.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="formula-box">
-                <span class="formula-label">Final</span>
-                <strong>Total Tax Payable</strong> = Income Tax − Section 87A Rebate + 4% Cess
-            </div>
-        </section>
+      <!-- 4. New Regime -->
+      <section class="info-section">
+        <div class="section-label">Comparision</div>
+        <h3>What's Different</h3>
+        <p class="section-note">
+          The new regime has lower slab rates but does not allow most
+          deductions.
+        </p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>New Regime</th>
+              <th>Old Regime</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Deduction</td>
+              <td>₹75,000 <span class="auto-badge">Auto-applied</span></td>
+              <td>₹50,000 <span class="auto-badge">Auto-applied</span></td>
+            </tr>
+            <tr>
+              <td>80C, 80D, HRA, 80G etc.</td>
+              <td>Not allowed</td>
+              <td>Allowed</td>
+            </tr>
+            <tr>
+              <td>Section 87A Rebate threshold</td>
+              <td>Up to ₹12,00,000</td>
+              <td>Up to ₹5,00,000</td>
+            </tr>
+            <tr>
+              <td>Section 87A Rebate amount</td>
+              <td>Up to ₹60,000</td>
+              <td>Up to ₹12,500</td>
+            </tr>
+            <tr>
+              <td>Max surcharge rate</td>
+              <td>25% (capped)</td>
+              <td>37%</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="formula-box">
+          <span class="formula-label">New Regime</span>
+          <strong>Taxable Income</strong> = Gross Total Income − ₹75,000 −
+          Professional Tax
+        </div>
+        <div class="formula-box" style="margin-top: 10px">
+          <span class="formula-label">Old Regime</span>
+          <strong>Taxable Income</strong> = Gross Total Income − ₹50,000 −
+          Professional Tax − All Deductions
+        </div>
+      </section>
 
-        <!-- 6. Additional Levies -->
-        <section class="info-section">
-            <div class="section-label">Additional Levies</div>
-            <h3>Surcharge</h3>
-            <p class="section-note">Applicable only when total income exceeds ₹50,00,000. </p>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Total Income</th>
-                        <th class="center">New Regime</th>
-                        <th class="center">Old Regime</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Up to ₹50,00,000</td><td class="center">Nil</td><td class="center">Nil</td></tr>
-                    <tr><td>₹50L – ₹1 crore</td><td class="center">10%</td><td class="center">10%</td></tr>
-                    <tr><td>₹1 crore – ₹2 crore</td><td class="center">15%</td><td class="center">15%</td></tr>
-                    <tr><td>₹2 crore – ₹5 crore</td><td class="center">25%</td><td class="center">25%</td></tr>
-                    <tr><td>Above ₹5 crore</td><td class="center">25% <em>(capped)</em></td><td class="center">37%</td></tr>
-                </tbody>
-            </table>
-        </section>
+      <!-- 5. Both Regimes -->
+      <section class="info-section">
+        <div class="section-label">Both Regimes</div>
+        <h3>Common to Both</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Professional Tax</strong></td>
+              <td>
+                Deducted from gross total income under both regimes. Enter the
+                amount deducted from your salary.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Section 80TTA</strong></td>
+              <td>
+                First ₹10,000 of savings interest exempt. Applied automatically
+                to the interest income you enter.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Health &amp; Education Cess</strong></td>
+              <td>
+                4% on tax after rebate, under both regimes. Funds primary
+                education and healthcare.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="formula-box">
+          <span class="formula-label">Final</span>
+          <strong>Total Tax Payable</strong> = Income Tax − Section 87A Rebate +
+          4% Cess
+        </div>
+      </section>
 
-        <!-- 7. Scope -->
-<section class="info-section">
-    <div class="section-label">Scope</div>
-    <h3>Who This Calculator Applies To</h3>
-    <p style="font-size: 0.95rem; line-height: 1.7; color: #57524a;">
-        This calculator is designed for <strong>salaried resident individuals below 60 years of age</strong>.
-        It does not apply to senior citizens (60+), NRIs, or self-employed individuals, as different tax
-        rules and exemption limits apply to those categories. Capital gains income, marginal surcharge relief,
-        and TDS already paid are also not accounted for. Based on Union Budget 2025 provisions for FY 2025–26 (AY 2026–27).
-    </p>
-</section>
+      <!-- 6. Additional Levies -->
+      <section class="info-section">
+        <div class="section-label">Additional Levies</div>
+        <h3>Surcharge</h3>
+        <p class="section-note">
+          Applicable only when total income exceeds ₹50,00,000.
+        </p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Total Income</th>
+              <th class="center">New Regime</th>
+              <th class="center">Old Regime</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Up to ₹50,00,000</td>
+              <td class="center">Nil</td>
+              <td class="center">Nil</td>
+            </tr>
+            <tr>
+              <td>₹50L – ₹1 crore</td>
+              <td class="center">10%</td>
+              <td class="center">10%</td>
+            </tr>
+            <tr>
+              <td>₹1 crore – ₹2 crore</td>
+              <td class="center">15%</td>
+              <td class="center">15%</td>
+            </tr>
+            <tr>
+              <td>₹2 crore – ₹5 crore</td>
+              <td class="center">25%</td>
+              <td class="center">25%</td>
+            </tr>
+            <tr>
+              <td>Above ₹5 crore</td>
+              <td class="center">25% <em>(capped)</em></td>
+              <td class="center">37%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <!-- 8. Disclaimer -->
-        <section class="info-section disclaimer-section">
-            <div class="disclaimer-icon">⚠</div>
-            <h3>Disclaimer</h3>
-            <p>This calculator is for <strong>informational and planning purposes only</strong> and is not a substitute for professional tax advice. Tax laws are subject to amendment without notice. The payable figure does not account for TDS already deducted — any excess TDS is eligible for a refund when you file your ITR.</p>
-            <p>For filing returns or detailed tax planning, refer to the Income Tax Department's official portal at <a href="https://www.incometax.gov.in" target="_blank">incometax.gov.in</a> or consult a qualified Chartered Accountant.</p>
-        </section>
+      <!-- 7. Scope -->
+      <section class="info-section">
+        <div class="section-label">Scope</div>
+        <h3>Who This Calculator Applies To</h3>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: #57524a">
+          This calculator is designed for
+          <strong>salaried resident individuals below 60 years of age</strong>.
+          It does not apply to senior citizens (60+), NRIs, or self-employed
+          individuals, as different tax rules and exemption limits apply to
+          those categories. Capital gains income, marginal surcharge relief, and
+          TDS already paid are also not accounted for. Based on Union Budget
+          2025 provisions for FY 2025–26 (AY 2026–27).
+        </p>
+      </section>
 
+      <!-- 8. Disclaimer -->
+      <section class="info-section disclaimer-section">
+        <div class="disclaimer-icon">⚠</div>
+        <h3>Disclaimer</h3>
+        <p>
+          This calculator is for
+          <strong>informational and planning purposes only</strong> and is not a
+          substitute for professional tax advice. Tax laws are subject to
+          amendment without notice. The payable figure does not account for TDS
+          already deducted — any excess TDS is eligible for a refund when you
+          file your ITR.
+        </p>
+        <p>
+          For filing returns or detailed tax planning, refer to the Income Tax
+          Department's official portal at
+          <a href="https://www.incometax.gov.in" target="_blank"
+            >incometax.gov.in</a
+          >
+          or consult a qualified Chartered Accountant.
+        </p>
+      </section>
     </div>
-
-</body>
+  </body>
 </html>
