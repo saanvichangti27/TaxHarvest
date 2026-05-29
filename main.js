@@ -22,7 +22,7 @@ document.getElementById("calc-btn").addEventListener("click", (e) => {
 
     const totalInc = salary + interestInc + otherInc + rentInc;
 
-    let totalDed = OldReg.Deductions(
+    let totalDedOld = OldReg.Deductions(
         salary,
         basicDed,
         medInsurance,
@@ -31,18 +31,20 @@ document.getElementById("calc-btn").addEventListener("click", (e) => {
         charity,
         otherDed,
         city,
-    );
+    ) + profTax + OldReg.stdDed;
 
-    const taxableIncOld = Math.max(0, totalInc - totalDed);
-    const taxableIncNew = Math.max(0, totalInc - NewReg.stdDed);
+    let totalDedNew = profTax + NewReg.stdDed;
+
+    const taxableIncOld = Math.max(0, totalInc - totalDedOld);
+    const taxableIncNew = Math.max(0, totalInc - totalDedNew);
 
     let incomeTaxNew =
         NewReg.NewIncomeTax(taxableIncNew) + NewReg.Surcharge(taxableIncNew);
     let incomeTaxOld =
         OldReg.OldIncomeTax(taxableIncOld) + OldReg.Surcharge(taxableIncOld);
 
-    const totalTaxOld = incomeTaxOld + profTax;
-    const totalTaxNew = incomeTaxNew + profTax;
+    const totalTaxOld = incomeTaxOld;
+    const totalTaxNew = incomeTaxNew;
 
     let rebateNew = 0, rebateOld = 0;
     if (totalInc > 0 && taxableIncNew <= 1200000) {
@@ -78,7 +80,7 @@ document.getElementById("calc-btn").addEventListener("click", (e) => {
 
     document.getElementById("res-ded-new").textContent = 0;
     document.getElementById("res-ded-old").textContent =
-        totalInc > 0 ? Math.round(totalDed) : 0;
+        totalInc > 0 ? Math.round(totalDedOld) : 0;
     document.getElementById("res-taxable-new").textContent =
         Math.round(taxableIncNew);
     document.getElementById("res-taxable-old").textContent =

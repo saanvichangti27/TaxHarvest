@@ -1,4 +1,4 @@
-const stdDed = 50000;
+export const stdDed = 50000;
 export const rebate = 12500;
 
 export function OldIncomeTax(taxSalary) {
@@ -41,7 +41,7 @@ export function Deductions(
   if (basicDed <= 150000) Ded80C = basicDed;
   else Ded80C = 150000;
 
-  let totalDed = medDed + houseDed + Ded80C + charity + otherDed + stdDed + hraDed;
+  let totalDed = medDed + houseDed + Ded80C + charity + otherDed + hraDed;
   return totalDed;
 }
 
