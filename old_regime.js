@@ -19,19 +19,17 @@ export function Deductions(
   HRA,
   charity,
   otherDed,
-  city
+  city,
 ) {
   let medDed = 0,
     houseDed = 0,
     Ded80C = 0,
-    hraDed=0;
+    hraDed = 0;
   if (medInsurance <= 50000) medDed = medInsurance;
   else medDed = 50000;
 
-  if(city=='metro')
-    hraDed = Math.min(HRA, 0.5*salary)
-  else
-    hraDed = Math.min(HRA, 0.4*salary)
+  if (city == "metro") hraDed = Math.min(HRA, 0.5 * salary);
+  else hraDed = Math.min(HRA, 0.4 * salary);
 
   //charity has no deduction
 
@@ -45,17 +43,19 @@ export function Deductions(
   return totalDed;
 }
 
-export function Surcharge(taxSalary){
-  let surcharge = 0
-  if (taxSalary <= 5000000 )
-    surcharge = 0
-  else if (taxSalary <= 10000000)
-    surcharge = 0.1*(taxSalary - 5000000)
+export function Surcharge(taxSalary) {
+  let surcharge = 0;
+  if (taxSalary <= 5000000) surcharge = 0;
+  else if (taxSalary <= 10000000) surcharge = 0.1 * (taxSalary - 5000000);
   else if (taxSalary <= 20000000)
-    surcharge = 0.15*(taxSalary - 10000000) + 0.1*5000000
+    surcharge = 0.15 * (taxSalary - 10000000) + 0.1 * 5000000;
   else if (taxSalary <= 50000000)
-    surcharge = 0.25*(taxSalary - 10000000) + 0.15*(10000000) + 0.1*5000000
-  else 
-    surcharge = 0.37*(taxSalary - 50000000) + 0.25*30000000 + 0.15*(10000000) + 0.1*5000000
-return surcharge
+    surcharge = 0.25 * (taxSalary - 10000000) + 0.15 * 10000000 + 0.1 * 5000000;
+  else
+    surcharge =
+      0.37 * (taxSalary - 50000000) +
+      0.25 * 30000000 +
+      0.15 * 10000000 +
+      0.1 * 5000000;
+  return surcharge;
 }
