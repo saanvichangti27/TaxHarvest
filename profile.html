@@ -100,6 +100,23 @@
     <script>
       let isImageUploaded = false;
 
+      window.addEventListener('DOMContentLoaded', () =>{
+        const savedName = sessionStorage.getItem('th_username');
+        const savedAvatar = sessionStorage.getItem('th_avatar')
+
+        if(savedName){
+          document.getElementById('nameInput').value = savedName;
+          document.getElementById('displayName').textContent = savedName;
+    
+        }
+
+        if(savedAvatar){
+          document.getElementById('avatarImage').src = savedAvatar;
+          isImageUploaded = true;
+        }
+      });
+
+
       // Real-time photo preview handler
       function previewImage(event) {
         const input = event.target;
@@ -126,12 +143,16 @@
         const enteredName = document.getElementById("nameInput").value.trim();
         const toast = document.getElementById("successToast");
 
-        let displaySavedName =
-          enteredName !== "" ? enteredName : "[No Name Entered]";
-        let displaySavedPhoto = isImageUploaded
-          ? "Custom Image Uploaded"
-          : "Default Placeholder Used";
-
+        if(enteredName) sessionStorage.setItem('th_username', enteredName);
+        if(isImageUploaded) {
+          try{
+            const imgSrc = document.getElementById('avatarImage').src;
+            sessionStorage.setItem('th_avatar', imgSrc);
+          }
+          catch(e){
+            console.warn('Photo too large to save in local storage:', e);
+          }
+        }
         // Update success message UI text with visual changes log
         toast.innerHTML = `✓ Changes Saved!<br><span style='font-weight: normal; font-size: 0.85rem; opacity: 0.85;'>Redirecting to home...</span>`;
         toast.style.display = "block";
