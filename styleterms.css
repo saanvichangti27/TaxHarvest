@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,13 +16,13 @@ body {
     min-height: 100vh;
 }
 
+/* ── Nav bar ── */
 .nav-wrapper {
   width: 100%;
   background-color: #ffffff;
   border-bottom: 1px solid #e6e1da;
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -35,10 +37,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;        /* needed for centring trick */
+  position: relative;
 }
 
-/* ── LEFT: logo + name ── */
 .nav-brand {
   display: flex;
   align-items: center;
@@ -60,7 +61,6 @@ nav {
   letter-spacing: -0.3px;
 }
 
-/* ── CENTRE: nav links ── */
 .nav-links {
   display: flex;
   align-items: center;
@@ -87,7 +87,6 @@ nav {
   color: #2e2a24;
 }
 
-/* ── RIGHT: profile icon ── */
 .nav-right {
   flex-shrink: 0;
 }
@@ -108,6 +107,28 @@ nav {
   background-color: #f7f5f0;
   color: #2e2a24;
 }
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+  .nav-links {
+    position: static;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-right {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+  }
+}
+
+
 /* ── Layout ── */
 .content-wrapper {
     width: 100%;
@@ -363,22 +384,3 @@ nav {
     text-underline-offset: 2px;
 }
 
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    height: auto;
-    padding: 12px 20px;
-    gap: 10px;
-  }
-  .nav-links {
-    position: static;
-    transform: none;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .nav-right {
-    position: absolute;
-    top: 12px;
-    right: 20px;
-  }
-}

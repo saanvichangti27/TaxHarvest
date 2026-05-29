@@ -1,52 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaxHarvest - About</title>
-     <link rel = "stylesheet" href="styleabout.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Brand</title>
+  <link rel="stylesheet" href="styleabout.css" />
 </head>
 <body>
 
-    <div class="nav-wrapper">
-  <nav>
-    <a href="index.html" class="nav-brand">
-      <img src="imglogofinal.jpg" alt="TaxHarvest Logo" class="nav-logo" />
-      <span class="nav-name">TaxHarvest</span>
-    </a>
-
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="taxinput.html">Tax Calculation</a>
-      <a href="terms.html">Terms</a>
-    </div>
-
-    <div class="nav-right">
-      <a href="profile.html" class="nav-profile-btn" title="Profile">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="8" r="4"/>
-          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-        </svg>
+  <div class="nav-wrapper">
+    <nav>
+      <a href="index.html" class="nav-brand">
+        <img src="imglogofinal.jpg" alt="TaxHarvest Logo" class="nav-logo" />
+        <span class="nav-name">TaxHarvest</span>
       </a>
-    </div>
-  </nav>
-</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="taxinput.html">Tax Calculation</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="nav-right">
+        <a href="profile.html" class="nav-profile-btn" title="Profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
 
-    <div class="content-wrapper">
-        <div class="content-container">
-            
-            <section class="info-section">
-                <p class="sub-heading">Welcome to TaxHarvest</p>
-                <h2>Minimize your tax losses</h2>
-                
-                <p> This is the first version just for tax calculation</p>
-                                <p> Click on the Tax Calculation tab and try it out</p>
+  <div class="page">
+    <section class="hero">
 
+      <!-- LEFT: Brown panel — welcome + calculator -->
+      <div class="hero-left">
 
+        <div class="welcome-block">
+          
+          <h1 class="welcome-heading">Welcome to TaxHarvest <br> </h1>
+          <p class="tagline-left">
+            <br>
+            At TaxHarvest, we believe smart tax planning can make a meaningful difference. 
+            <br>
+            Our tools are built to help you understand your taxes clearly,
+            <br>minimize avoidable losses, and keep more of what you earn.
+            <br><br>
+          <p class="tagline-extra">  "Because every rupee matters."
+           <br><br>
+            </p>
+          </p>
         </div>
-    </div>
-    <script src='https://www.noupe.com/embed/019e71f3764171be9c10929ae3ddf34741f8.js'></script>
+
+        <div class="calc-widget">
+          <p class="calc-label">Savings Calculator</p>
+          <div class="calc-display" id="calcDisplay">0</div>
+          <div class="calc-grid">
+            <button class="calc-btn" onclick="calcInput('7')">7</button>
+            <button class="calc-btn" onclick="calcInput('8')">8</button>
+            <button class="calc-btn" onclick="calcInput('9')">9</button>
+            <button class="calc-btn" onclick="calcInput('4')">4</button>
+            <button class="calc-btn" onclick="calcInput('5')">5</button>
+            <button class="calc-btn" onclick="calcInput('6')">6</button>
+            <button class="calc-btn" onclick="calcInput('1')">1</button>
+            <button class="calc-btn" onclick="calcInput('2')">2</button>
+            <button class="calc-btn" onclick="calcInput('3')">3</button>
+            <button class="calc-btn" onclick="calcInput('0')">0</button>
+            <button class="calc-btn" onclick="clearCalc()">C</button>
+            <button class="calc-btn accent" onclick="calcSavings()">%</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Beige panel — about + CTA -->
+      <div class="hero-right">
+
+        
+
+        <div class="about-card">
+          
+          <h2 class="about-title">About <em>Us</em></h2>
+          <p class="about-eyebrow">What we do</p>
+          <p class="about-body2">
+  Side-by-Side Comparison
+</p>
+
+<p class="about-body">
+  Compare your tax under both the Old and New Regime in one simple view — clear, quick, and easy to understand.
+</p>
+
+<p class="about-body2">
+  Smart Saving Suggestions
+</p>
+
+<p class="about-body">
+  Get thoughtful recommendations on deductions and tax-saving opportunities that could help lower your overall tax.
+</p>
+
+<p class="about-body2">
+  Transparent Calculations
+</p>
+
+<p class="about-body">
+  Every calculation is broken down clearly, including slabs, rebates, cess, and surcharges — so you always know where your numbers come from.
+</p>
+          
+          <div class="deco-line"></div>
+
+          <div class="dot-cluster">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta-btn" href="taxinput.html">
+            Calculate your savings now <span class="arrow">→</span>
+          </a>
+         
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let calcVal = '';
+
+    function calcInput(v) {
+      if (calcVal.length < 10) {
+        calcVal += v;
+        document.getElementById('calcDisplay').textContent = calcVal;
+      }
+    }
+
+    function clearCalc() {
+      calcVal = '';
+      document.getElementById('calcDisplay').textContent = '0';
+    }
+
+    function calcSavings() {
+      if (!calcVal) return;
+      const amt = parseFloat(calcVal);
+      const saved = (amt * 0.15).toFixed(2);
+      calcVal = saved;
+      document.getElementById('calcDisplay').textContent = saved;
+    }
+  </script>
+
 </body>
 </html>
