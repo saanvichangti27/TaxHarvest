@@ -318,7 +318,7 @@
 
         if (payableNew < payableOld) {
             badgeNew.innerHTML = badgeHTML;
-            savingsLine.innerHTML = `You save <span>₹${diff.toLocaleString('en-IN')}</span> in taxes if you choose the <span>New Regime</span>`;
+            savingsLine.innerHTML = `<span>New Regime</span> is recommended for you. It saves you <span>₹${diff.toLocaleString('en-IN')}</span> in taxes.`;
         } else if (payableOld < payableNew) {
             badgeOld.innerHTML = badgeHTML;
             savingsLine.innerHTML = `You save <span>₹${diff.toLocaleString('en-IN')}</span> in taxes if you choose the <span>Old Regime</span>`;
