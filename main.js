@@ -1,5 +1,6 @@
 import * as OldReg from "./old_regime.js";
 import * as NewReg from "./new_regime.js";
+import { getSavingsTips } from "./savings.js";
 
 document.getElementById("calc-btn").addEventListener("click", (e) => {
     const salary = parseInt(document.getElementById("grossSalary").value) || 0;
@@ -101,4 +102,21 @@ document.getElementById("calc-btn").addEventListener("click", (e) => {
     document.getElementById("res-payable-old").textContent = Math.round(
         payableTaxOld + cessOld,
     );
+
+
+     const tips = getSavingsTips(basicDed, medInsurance, HRA, charity, payableTaxOld);
+    const savingsSection = document.getElementById("savings-section");
+    const tipsList = document.getElementById("savings-tips-list");
+    tipsList.innerHTML = "";
+
+    if (payableTaxOld + cessOld > 0) {
+        tips.forEach(tip => {
+            const li = document.createElement("li");
+            li.textContent = tip;
+            tipsList.appendChild(li);
+        });
+        savingsSection.style.display = "block";
+    } else {
+        savingsSection.style.display = "none";
+    }
 });
