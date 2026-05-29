@@ -198,12 +198,12 @@
                         <th
                             style="text-align: left; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown);">
                             Particulars</th>
-                        <th
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">
-                            New Regime</th>
-                        <th
-                            style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">
-                            Old Regime</th>
+                        <th style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">
+    <span id="badge-new"></span>New Regime
+</th>
+<th style="text-align: right; padding: 12px; border: 1px solid var(--border-color); color: var(--primary-brown); width: 25%;">
+    <span id="badge-old"></span>Old Regime
+</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -266,6 +266,7 @@
                     </tr>
                 </tbody>
             </table>
+            <div id="savings-line" style="display:none;"></div>
         </div>
     </div>
     <script type="module" src="main.js"></script>
@@ -284,10 +285,43 @@
         }
 
         function yourFunctionName() {
-            const results = document.getElementById('results-section');
-            results.style.display = 'block';
-            results.scrollIntoView({ behavior: 'smooth' });
+    const results = document.getElementById('results-section');
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth' });
+
+    // Wait briefly for main.js to populate values, then show badge + savings
+    setTimeout(() => {
+        const payableNew = parseInt(document.getElementById('res-payable-new').textContent) || 0;
+        const payableOld = parseInt(document.getElementById('res-payable-old').textContent) || 0;
+
+        const badgeNew = document.getElementById('badge-new');
+        const badgeOld = document.getElementById('badge-old');
+        const savingsLine = document.getElementById('savings-line');
+
+        badgeNew.innerHTML = '';
+        badgeOld.innerHTML = '';
+
+        if (payableNew === 0 && payableOld === 0) {
+            savingsLine.style.display = 'none';
+            return;
         }
+
+        const diff = Math.abs(payableNew - payableOld);
+        const badgeHTML = '<span class="recommended-badge">✔</span>';
+
+        if (payableNew < payableOld) {
+            badgeNew.innerHTML = badgeHTML;
+            savingsLine.innerHTML = `You save <span>₹${diff.toLocaleString('en-IN')}</span> in taxes if you choose the <span>New Regime</span>`;
+        } else if (payableOld < payableNew) {
+            badgeOld.innerHTML = badgeHTML;
+            savingsLine.innerHTML = `You save <span>₹${diff.toLocaleString('en-IN')}</span> in taxes if you choose the <span>Old Regime</span>`;
+        } else {
+            savingsLine.innerHTML = `Both regimes result in the same payable tax.`;
+        }
+
+        savingsLine.style.display = 'block';
+    }, 50);
+}
 
 
         document.querySelectorAll('.comma-input').forEach(input => {

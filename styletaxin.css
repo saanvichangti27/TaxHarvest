@@ -243,3 +243,42 @@
                 left: 50%; right: auto; transform: translateX(-50%);
             }
         }
+
+      .recommended-badge {
+    display: inline-block;
+    background-color: #e6f4ea;
+    color: #2e7d32;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.3px;
+    border: 1px solid #a5d6a7;
+}
+
+#savings-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 14px 20px;
+    background-color: #f0faf1;
+    border: 1px solid #a5d6a7;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #2e7d32;
+}
+
+#savings-line::before {
+    content: "✦";
+    font-size: 18px;
+    color: #4CAF50;
+    flex-shrink: 0;
+}
+
+#savings-line span {
+    font-weight: bold;
+    color: #1b5e20;
+}
