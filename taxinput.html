@@ -126,7 +126,6 @@
               placeholder="0"
               id="ProfTax"
               max="2500"
-              oninput="validateMax(this)"
             />
           </div>
           <span
@@ -610,6 +609,8 @@
     <script>
       function validateMax(input) {
         const max = parseInt(input.getAttribute("max"));
+            const rawValue = input.value.replace(/,/g, "");  // ← add this
+
         const errorSpan = input
           .closest(".input-group")
           .querySelector(".field-error");
@@ -697,6 +698,8 @@
           let res =
             otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
           e.target.value = res;
+
+          if (e.target.hasAttribute("max")) validateMax(e.target);
         });
       });
     </script>

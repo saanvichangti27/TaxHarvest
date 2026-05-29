@@ -1,100 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaxHarvest - Profile</title>
-      <link rel = "stylesheet" href="styleprofile.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="styleprofile.css" />
+  </head>
+  <body>
     <div class="nav-wrapper">
-        <nav>
-            <div class="nav-left">
-                <a href="index.html">Home</a>
-                <a href="taxinput.html">Tax Calculation</a>
-                <a href="terms.html">Terms</a>
-            </div>
-            <div class="nav-right">
-                <a href="profile.html">Profile</a>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-left">
+          <a href="index.html">Home</a>
+          <a href="taxinput.html">Tax Calculation</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="nav-right">
+          <a href="profile.html">Profile</a>
+        </div>
+      </nav>
     </div>
 
     <div class="wrapper">
-        <section class="profile-section">
-            <h2>User Profile</h2>
-            
-            <form id="profileForm" onsubmit="saveChanges(event)" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-                
-                <div class="avatar-container">
-                    <img id="avatarImage" class="avatar-preview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238c857b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>" alt="Profile Picture">
-                    
-                    <label for="fileInput" class="upload-label" title="Upload new photo">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                            <circle cx="12" cy="13" r="4"></circle>
-                        </svg>
-                    </label>
-                    <input type="file" id="fileInput" name="profile_pic" accept="image/*" onchange="previewImage(event)">
-                </div>
+      <section class="profile-section">
+        <h2>User Profile</h2>
 
-                <div id="displayName" class="user-display-name">Your Name</div>
+        <form
+          id="profileForm"
+          onsubmit="saveChanges(event)"
+          style="
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div class="avatar-container">
+            <img
+              id="avatarImage"
+              class="avatar-preview"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238c857b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>"
+              alt="Profile Picture"
+            />
 
-                <div class="input-group">
-                    <label for="nameInput">UPDATE DISPLAY NAME</label>
-                    <input type="text" id="nameInput" name="username" value="" placeholder="Enter your name" oninput="updateName(this.value)">
-                </div>
+            <label
+              for="fileInput"
+              class="upload-label"
+              title="Upload new photo"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+                ></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              name="profile_pic"
+              accept="image/*"
+              onchange="previewImage(event)"
+            />
+          </div>
 
-                <button type="submit" class="save-btn">Save Changes</button>
-            </form>
-        </section>
+          <div id="displayName" class="user-display-name">Your Name</div>
 
-        <div id="successToast" class="success-toast"></div>
+          <div class="input-group">
+            <label for="nameInput">UPDATE DISPLAY NAME</label>
+            <input
+              type="text"
+              id="nameInput"
+              name="username"
+              value=""
+              placeholder="Enter your name"
+              oninput="updateName(this.value)"
+            />
+          </div>
+
+          <button type="submit" class="save-btn">Save Changes</button>
+        </form>
+      </section>
+
+      <div id="successToast" class="success-toast"></div>
     </div>
 
     <script>
-        let isImageUploaded = false;
+      let isImageUploaded = false;
 
-        // Real-time photo preview handler
-        function previewImage(event) {
-            const input = event.target;
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('avatarImage').src = e.target.result;
-                    isImageUploaded = true;
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+      // Real-time photo preview handler
+      function previewImage(event) {
+        const input = event.target;
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("avatarImage").src = e.target.result;
+            isImageUploaded = true;
+          };
+          reader.readAsDataURL(input.files[0]);
         }
+      }
 
-        // Real-time display name text handler 
-        function updateName(val) {
-            const nameHeader = document.getElementById('displayName');
-            nameHeader.textContent = val.trim() !== "" ? val : "Your Name";
-        }
+      // Real-time display name text handler
+      function updateName(val) {
+        const nameHeader = document.getElementById("displayName");
+        nameHeader.textContent = val.trim() !== "" ? val : "Your Name";
+      }
 
-        // Action when pressing "Save Changes"
-        function saveChanges(event) {
-            event.preventDefault(); // Prevents instant page reload
-            
-            const enteredName = document.getElementById('nameInput').value.trim();
-            const toast = document.getElementById('successToast');
-            
-            let displaySavedName = enteredName !== "" ? enteredName : "[No Name Entered]";
-            let displaySavedPhoto = isImageUploaded ? "Custom Image Uploaded" : "Default Placeholder Used";
+      // Action when pressing "Save Changes"
+      function saveChanges(event) {
+        event.preventDefault(); // Prevents instant page reload
 
-            // Update success message UI text with visual changes log
-            toast.innerHTML = `✓ Changes Saved!<br><span style='font-weight: normal; font-size: 0.85rem; opacity: 0.85;'>Redirecting to home...</span>`;
-            toast.style.display = 'block';
+        const enteredName = document.getElementById("nameInput").value.trim();
+        const toast = document.getElementById("successToast");
 
-            // Pauses for 1.5 seconds so the user can read the success state, then redirects
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 1500);
-        }
+        let displaySavedName =
+          enteredName !== "" ? enteredName : "[No Name Entered]";
+        let displaySavedPhoto = isImageUploaded
+          ? "Custom Image Uploaded"
+          : "Default Placeholder Used";
+
+        // Update success message UI text with visual changes log
+        toast.innerHTML = `✓ Changes Saved!<br><span style='font-weight: normal; font-size: 0.85rem; opacity: 0.85;'>Redirecting to home...</span>`;
+        toast.style.display = "block";
+
+        // Pauses for 1.5 seconds so the user can read the success state, then redirects
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      }
     </script>
-
-</body>
+  </body>
 </html>
