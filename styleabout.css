@@ -230,7 +230,6 @@ nav {
   border: 1px solid rgba(245, 240, 232, 0.15);
   border-radius: 16px;
   padding: 1.5rem;
-  margin-top: 2rem;
   position: relative;
   z-index: 1;
 }
@@ -477,9 +476,9 @@ nav {
   border: 1px solid #ede7db;
   border-radius: 12px;
   padding: 16px 20px;
-  margin-bottom: 12px;
+  margin-bottom: 13px;
 }
 
 .about-point:last-child {
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
