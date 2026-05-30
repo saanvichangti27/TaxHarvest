@@ -16,6 +16,7 @@ body {
 
 /* ── Nav bar ── */
 .nav-wrapper {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
   background-color: #ffffff;
   border-bottom: 1px solid #e6e1da;
